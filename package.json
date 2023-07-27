@@ -2,10 +2,22 @@
   "name": "dailycalm",
   "version": "1.0.0",
   "description": "Introducing DailyCalm, your personal self-care companion!",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build"
   },
+  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "apollo-server-express": "^3.12.0",
+    "mongodb": "^5.7.0"
+  }
 }

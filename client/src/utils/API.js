@@ -5,8 +5,8 @@ import { GET_ME } from "../graphql/queries";
 import {
   LOGIN_USER,
   ADD_USER,
-  SAVE_BOOK,
-  REMOVE_BOOK,
+  SAVE_CARD,
+  REMOVE_CARD,
 } from "../graphql/mutations";
 
 // debug
@@ -51,37 +51,38 @@ export const loginUser = (userData) => {
 };
 
 // API.js
-export const saveBook = async (bookData, token) => {
+export const saveCard = async (cardData, token) => {
   try {
     const response = await client.mutate({
-      mutation: SAVE_BOOK,
-      variables: { bookData },
+      mutation: SAVE_CARD,
+      variables: { cardData },
       headers: {
         authorization: `Bearer ${token}`,
       },
     });
 
-    if (!response || !response.data || !response.data.saveBook) {
+    if (!response || !response.data || !response.data.saveCard) {
       throw new Error("Invalid response or missing data.");
     }
 
-    return response.data.saveBook;
+    return response.data.saveCard;
   } catch (err) {
     console.error(err);
-    throw new Error("Error saving the book.");
+    throw new Error("Error saving the card.");
   }
 };
 
-export const deleteBook = (bookId, token) => {
+export const deleteCard = (cardId, token) => {
   return client.mutate({
-    mutation: REMOVE_BOOK,
-    variables: { bookId },
+    mutation: REMOVE_CARD,
+    variables: { cardId },
     headers: {
       authorization: `Bearer ${token}`,
     },
   });
 };
 
+// change line 86. modify comment when done
 export const searchGoogleBooks = (query) => {
   return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
 };

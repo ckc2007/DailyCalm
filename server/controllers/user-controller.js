@@ -62,13 +62,13 @@ module.exports = {
       return res.status(500).json(err);
     }
   },
-  // save a book to a user's `savedBooks` field by adding it to the set (to prevent duplicates)
+  // save a card to a user's `savedCards` field by adding it to the set (to prevent duplicates)
   // user comes from `req.user` created in the auth middleware function
-  async saveBook(req, res) {
+  async saveCard(req, res) {
     try {
       const updatedUser = await User.findOneAndUpdate(
         { _id: req.user._id },
-        { $addToSet: { savedBooks: req.body } },
+        { $addToSet: { savedCards: req.body } },
         { new: true, runValidators: true }
       );
       return res.json(updatedUser);
@@ -77,11 +77,11 @@ module.exports = {
       return res.status(500).json(err);
     }
   },
-  // remove a book from `savedBooks`
-  async deleteBook({ user, params }, res) {
+  // remove a card from `savedCards`
+  async deleteCard({ user, params }, res) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: user._id },
-      { $pull: { savedBooks: { bookId: params.bookId } } },
+      { $pull: { savedCards: { cardId: params.cardId } } },
       { new: true }
     );
     if (!updatedUser) {

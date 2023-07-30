@@ -55,6 +55,7 @@ export const saveCard = async (cardData, token) => {
   try {
     const response = await client.mutate({
       mutation: SAVE_CARD,
+      // was: variables: {cardData}
       variables: { cardData },
       headers: {
         authorization: `Bearer ${token}`,

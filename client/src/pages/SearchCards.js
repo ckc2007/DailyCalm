@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 
 import { authService } from "../utils/auth";
-import { saveCard, searchGoogleCards } from "../utils/API";
+import { saveCard } from "../utils/API";
 import { saveCardIds, getSavedCardIds } from "../utils/localStorage";
 
 // import { GET_ME } from "../utils/queries"; // Import the GET_ME query if you haven't already
@@ -61,6 +61,11 @@ const SearchCards = () => {
   // for saved message
   const [showSavedMessage, setShowSavedMessage] = useState(false);
 
+  // Create a useEffect hook to set the dummyCards as searchedCards on component mount
+  useEffect(() => {
+    setSearchedCards(dummyCards);
+  }, []);
+
   // set up useEffect hook to save `savedCardIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
@@ -79,6 +84,7 @@ const SearchCards = () => {
 
     try {
       // no need for an API fetch here anymore
+      console.log("Form submitted with search input:", searchInput);
 
       setSearchedCards(dummyCards);
       setSearchInput("");
@@ -89,8 +95,13 @@ const SearchCards = () => {
 
   // create function to handle saving a card to our database
   const handleSaveCard = async (cardId) => {
+    // debug searchedCards
+    console.log("Searched Cards:", searchedCards);
     // find the card in `searchedCards` state by the matching id
     const cardToSave = searchedCards.find((card) => card.cardId === cardId);
+
+    // debug >>> reading UNDEFINED
+    console.log("cardToSave:", cardToSave);
 
     // get token
     const token = authService.loggedIn() ? authService.getToken() : null;
@@ -98,6 +109,17 @@ const SearchCards = () => {
     if (!token) {
       return false;
     }
+
+    // Construct the `cardData` object based on the expected structure from the server
+    const cardData = {
+      title: cardToSave.title,
+      description: cardToSave.description,
+      image: cardToSave.image,
+      // Add other properties as needed based on the `CardInput` type in the GraphQL schema
+    };
+    // debug
+    console.log("cardData:", cardData);
+
     // debug
     try {
       const savedCard = await saveCard(cardToSave, token);
@@ -173,7 +195,10 @@ const SearchCards = () => {
                         {authService.loggedIn() && (
                           <Button
                             className="btn-block btn-info"
-                            onClick={() => handleSaveCard(card.cardId)}
+                            onClick={() => {
+                              console.log("clicked card:", card);
+                              handleSaveCard(card.cardId);
+                            }}
                           >
                             {savedCardIds?.some(
                               (savedCardId) => savedCardId === card.cardId
@@ -204,7 +229,13 @@ const SearchCards = () => {
                         <Card.Text>{card.description}</Card.Text>
                         <Button
                           className="btn-block btn-info"
-                          onClick={() => handleSaveCard(card.cardId)}
+                          onClick={() => {
+                            console.log(
+                              "Clicked on Save Button for Card ID:",
+                              card.cardId
+                            );
+                            handleSaveCard(card.cardId);
+                          }}
                         >
                           {savedCardIds?.some(
                             (savedCardId) => savedCardId === card.cardId

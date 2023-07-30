@@ -5,6 +5,27 @@ import { authService } from "../utils/auth";
 import { saveCard, searchGoogleCards } from "../utils/API";
 import { saveCardIds, getSavedCardIds } from "../utils/localStorage";
 
+import { GET_ME } from "../utils/queries"; // Import the GET_ME query if you haven't already
+import { useQuery } from "@apollo/client"; // Import useQuery hook
+
+// hard coded dummy data - will be replaced by our custom card data
+// TODO: bring in our card data here once we create it
+const dummyCards = [
+  {
+    cardId: "dummy_card_1",
+    title: "Dummy Card 1",
+    description: "This is the first dummy card.",
+    image: "https://dummyimage.com/200x300",
+  },
+  {
+    cardId: "dummy_card_2",
+    title: "Dummy Card 2",
+    description: "This is the second dummy card.",
+    image: "https://dummyimage.com/200x300",
+  },
+  // Add more dummy cards as needed
+];
+
 const SearchCards = () => {
   // create state for holding returned google api data
   const [searchedCards, setSearchedCards] = useState([]);
@@ -31,24 +52,12 @@ const SearchCards = () => {
       return false;
     }
 
+    // new code
+
     try {
-      const response = await searchGoogleCards(searchInput);
+      // no need for an API fetch here anymore
 
-      if (!response.ok) {
-        throw new Error("something went wrong!");
-      }
-
-      const { items } = await response.json();
-
-      const cardData = items.map((card) => ({
-        cardId: card.id,
-        authors: card.volumeInfo.authors || ["No author to display"],
-        title: card.volumeInfo.title,
-        description: card.volumeInfo.description,
-        image: card.volumeInfo.imageLinks?.thumbnail || "",
-      }));
-
-      setSearchedCards(cardData);
+      setSearchedCards(dummyCards);
       setSearchInput("");
     } catch (err) {
       console.error(err);
@@ -122,41 +131,66 @@ const SearchCards = () => {
             : "Search for a card to begin"}
         </h2>
         <Row>
-          {searchedCards.map((card) => {
-            return (
-              <Col key={card.cardId} md="4">
-                <Card key={card.cardId} border="dark">
-                  {card.image ? (
-                    <Card.Img
-                      src={card.image}
-                      alt={`The cover for ${card.title}`}
-                      variant="top"
-                    />
-                  ) : null}
-                  <Card.Body>
-                    <Card.Title>{card.title}</Card.Title>
-                    <p className="small">Authors: {card.authors}</p>
-                    <Card.Text>{card.description}</Card.Text>
-                    {authService.loggedIn() && (
-                      <Button
-                        disabled={savedCardIds?.some(
-                          (savedCardId) => savedCardId === card.cardId
+          {searchedCards.length > 0
+            ? searchedCards.map((card) => {
+                return (
+                  <Col key={card.cardId} md="4">
+                    <Card key={card.cardId} border="dark">
+                      {card.image ? (
+                        <Card.Img
+                          src={card.image}
+                          alt={`The cover for ${card.title}`}
+                          variant="top"
+                        />
+                      ) : null}
+                      <Card.Body>
+                        <Card.Title>{card.title}</Card.Title>
+                        <p className="small">Date: {card.date}</p>
+                        <Card.Text>{card.description}</Card.Text>
+                        {authService.loggedIn() && (
+                          <Button
+                            disabled={savedCardIds?.some(
+                              (savedCardId) => savedCardId === card.cardId
+                            )}
+                            className="btn-block btn-info"
+                            onClick={() => handleSaveCard(card.cardId)}
+                          >
+                            {savedCardIds?.some(
+                              (savedCardId) => savedCardId === card.cardId
+                            )
+                              ? "This card has already been saved!"
+                              : "Save this Card!"}
+                          </Button>
                         )}
-                        className="btn-block btn-info"
-                        onClick={() => handleSaveCard(card.cardId)}
-                      >
-                        {savedCardIds?.some(
-                          (savedCardId) => savedCardId === card.cardId
-                        )
-                          ? "This card has already been saved!"
-                          : "Save this Card!"}
-                      </Button>
-                    )}
-                  </Card.Body>
-                </Card>
-              </Col>
-            );
-          })}
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                );
+              })
+            : // Display the dummy cards when no searched cards are available
+              dummyCards.map((card) => {
+                return (
+                  <Col key={card.cardId} md="4">
+                    <Card key={card.cardId} border="dark">
+                      {card.image ? (
+                        <Card.Img
+                          src={card.image}
+                          alt={`The cover for ${card.title}`}
+                          variant="top"
+                        />
+                      ) : null}
+                      <Card.Body>
+                        <Card.Title>{card.title}</Card.Title>
+                        <Card.Text>{card.description}</Card.Text>
+                        {/* The save button is disabled for dummy cards */}
+                        <Button disabled className="btn-block btn-secondary">
+                          Dummy Card - Cannot Save
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                );
+              })}
         </Row>
       </Container>
       {showSavedMessage && <div>Saved!</div>}

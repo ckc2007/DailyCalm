@@ -8,7 +8,7 @@ export const GET_ME = gql`
       email
       savedCards {
         _id
-        authors
+        date
         description
         cardId
         image
@@ -19,4 +19,4 @@ export const GET_ME = gql`
   }
 `;
 
-// note this may need to change
+// chorney working here

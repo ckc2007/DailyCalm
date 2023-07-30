@@ -1,13 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import { ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import ApolloClient from "./utils/ApolloClient";
-import reportWebVitals from "./reportWebVitals";
+// import reportWebVitals from "./reportWebVitals";
 
-// console.log(localStorage.getItem("token")); // Log the token
+console.log(localStorage.getItem("token")); // Log the token
 
 // new:
 ReactDOM.render(

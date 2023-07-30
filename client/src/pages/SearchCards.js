@@ -5,8 +5,8 @@ import { authService } from "../utils/auth";
 import { saveCard, searchGoogleCards } from "../utils/API";
 import { saveCardIds, getSavedCardIds } from "../utils/localStorage";
 
-import { GET_ME } from "../utils/queries"; // Import the GET_ME query if you haven't already
-import { useQuery } from "@apollo/client"; // Import useQuery hook
+// import { GET_ME } from "../utils/queries"; // Import the GET_ME query if you haven't already
+// import { useQuery } from "@apollo/client"; // Import useQuery hook
 
 // hard coded dummy data - will be replaced by our custom card data
 // TODO: bring in our card data here once we create it
@@ -23,7 +23,30 @@ const dummyCards = [
     description: "This is the second dummy card.",
     image: "https://dummyimage.com/200x300",
   },
-  // Add more dummy cards as needed
+  {
+    cardId: "dummy_card_3",
+    title: "Dummy Card 3",
+    description: "This is the third dummy card.",
+    image: "https://dummyimage.com/200x300",
+  },
+  {
+    cardId: "dummy_card_4",
+    title: "Dummy Card 4",
+    description: "This is the fourth dummy card.",
+    image: "https://dummyimage.com/200x300",
+  },
+  {
+    cardId: "dummy_card_5",
+    title: "Dummy Card 5",
+    description: "This is the fifth dummy card.",
+    image: "https://dummyimage.com/200x300",
+  },
+  {
+    cardId: "dummy_card_6",
+    title: "Dummy Card 6",
+    description: "This is the sixth dummy card.",
+    image: "https://dummyimage.com/200x300",
+  },
 ];
 
 const SearchCards = () => {
@@ -149,9 +172,6 @@ const SearchCards = () => {
                         <Card.Text>{card.description}</Card.Text>
                         {authService.loggedIn() && (
                           <Button
-                            disabled={savedCardIds?.some(
-                              (savedCardId) => savedCardId === card.cardId
-                            )}
                             className="btn-block btn-info"
                             onClick={() => handleSaveCard(card.cardId)}
                           >
@@ -182,9 +202,15 @@ const SearchCards = () => {
                       <Card.Body>
                         <Card.Title>{card.title}</Card.Title>
                         <Card.Text>{card.description}</Card.Text>
-                        {/* The save button is disabled for dummy cards */}
-                        <Button disabled className="btn-block btn-secondary">
-                          Dummy Card - Cannot Save
+                        <Button
+                          className="btn-block btn-info"
+                          onClick={() => handleSaveCard(card.cardId)}
+                        >
+                          {savedCardIds?.some(
+                            (savedCardId) => savedCardId === card.cardId
+                          )
+                            ? "This card has already been saved!"
+                            : "Save this Card!"}
                         </Button>
                       </Card.Body>
                     </Card>

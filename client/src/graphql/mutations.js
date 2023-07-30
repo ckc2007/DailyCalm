@@ -28,9 +28,10 @@ export const SAVE_CARD = gql`
       _id
       username
       email
+      cardCount
       savedCards {
         _id
-        authors
+        date
         description
         cardId
         image
@@ -49,7 +50,7 @@ export const REMOVE_CARD = gql`
       email
       savedCards {
         _id
-        authors
+        date
         description
         cardId
         image
@@ -60,4 +61,4 @@ export const REMOVE_CARD = gql`
   }
 `;
 
-// note this may need to change
+// Chorney working here

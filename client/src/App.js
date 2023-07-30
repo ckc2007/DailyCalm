@@ -4,8 +4,8 @@ import SearchCards from "./pages/SearchCards";
 import SavedCards from "./pages/SavedCards";
 import Navbar from "./components/Navbar";
 
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
 
 // new:
 function App() {

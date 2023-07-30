@@ -55,6 +55,7 @@ export const saveCard = async (cardData, token) => {
   try {
     const response = await client.mutate({
       mutation: SAVE_CARD,
+      // was: variables: {cardData}
       variables: { cardData },
       headers: {
         authorization: `Bearer ${token}`,
@@ -83,8 +84,8 @@ export const deleteCard = (cardId, token) => {
 };
 
 // change line 86. modify comment when done
-export const searchGoogleBooks = (query) => {
-  return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
-};
+// export const searchGoogleBooks = (query) => {
+//   return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+// };
 
 export default client;

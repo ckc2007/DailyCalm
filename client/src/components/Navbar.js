@@ -23,11 +23,15 @@ const AppNavbar = () => {
               <Nav.Link as={Link} to="/">
                 Search For Cards
               </Nav.Link>
-              {/* if user is logged in show saved cards and logout */}
+              {/* if user is logged in show saved cards, play, and logout */}
               {authService.loggedIn() ? (
                 <>
                   <Nav.Link as={Link} to="/saved">
                     See Your Cards
+                  </Nav.Link>
+                  {/* Add the "Play" tab */}
+                  <Nav.Link as={Link} to="/play">
+                    Play
                   </Nav.Link>
                   <Nav.Link onClick={authService.logout}>Logout</Nav.Link>
                 </>

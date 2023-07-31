@@ -3,6 +3,15 @@ const { User } = require("../models");
 // import sign token function from auth
 const { signToken } = require("../utils/auth");
 
+const shuffleArray = (array) => {
+  // Shuffle the array using Fisher-Yates algorithm
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
 module.exports = {
   // get a single user by either their id or their username
   async getSingleUser(req, res) {
@@ -11,16 +20,18 @@ module.exports = {
         $or: [{ _id: req.user._id }, { username: req.params.username }],
       });
 
-    if (!foundUser) {
-      return res.status(400).json({ message: "Cannot find a user with this id!" });
-    }
+      if (!foundUser) {
+        return res
+          .status(400)
+          .json({ message: "Cannot find a user with this id!" });
+      }
 
-    res.json(foundUser);
-  }catch (err) {
-    console.log(err);
-    return res.status(500).json(err);
-  }
-},
+      res.json(foundUser);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json(err);
+    }
+  },
 
   // create a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
   async addUser(req, res) {
@@ -90,5 +101,32 @@ module.exports = {
         .json({ message: "Couldn't find user with this id!" });
     }
     return res.json(updatedUser);
+  },
+
+  // get saved cards in a random order
+  async getRandomSavedCards(req, res) {
+    try {
+      // Get the user ID from the authenticated user's token
+      const userId = req.user._id;
+
+      // Find the user by ID and populate the "savedCards" field to get the saved cards
+      const user = await User.findById(userId).populate("savedCards");
+
+      // Check if the user exists
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      // Get the saved cards from the user object
+      const savedCards = user.savedCards;
+
+      // Shuffle the saved cards array to get them in a random order
+      const shuffledCards = shuffleArray(savedCards);
+
+      res.json(shuffledCards);
+    } catch (err) {
+      console.error("Error getting saved cards:", err);
+      res.status(500).json({ message: "Server error" });
+    }
   },
 };

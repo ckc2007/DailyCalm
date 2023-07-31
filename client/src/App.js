@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import SearchCards from "./pages/SearchCards";
 import SavedCards from "./pages/SavedCards";
+import PlayPage from "./pages/PlayPage"; // Import PlayPage
 import Navbar from "./components/Navbar";
 
 // import logo from './logo.svg';
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SearchCards />} />
         <Route path="/saved" element={<SavedCards />} />
+        <Route path="/play" element={<PlayPage />} />
         <Route path="*" element={<h1 className="display-2">Wrong page!</h1>} />
       </Routes>
     </>

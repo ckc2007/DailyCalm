@@ -5,6 +5,9 @@ import { authService } from "../utils/auth";
 import { saveCard } from "../utils/API";
 import { saveCardIds, getSavedCardIds } from "../utils/localStorage";
 
+import { categories } from "../components/data"; // Import the categories array from data.js
+import CategoryMenu from "../components/categoryMenu"; // Import the CategoryMenu component from categoryMenu.js
+
 // import { GET_ME } from "../utils/queries"; // Import the GET_ME query if you haven't already
 // import { useQuery } from "@apollo/client"; // Import useQuery hook
 
@@ -61,10 +64,23 @@ const SearchCards = () => {
   // for saved message
   const [showSavedMessage, setShowSavedMessage] = useState(false);
 
-  // Create a useEffect hook to set the dummyCards as searchedCards on component mount
+  // create state for the active category
+  const [activeCategory, setActiveCategory] = useState(null);
+
+  // Create a useEffect hook to set the searchedCards based on the selected category's cards
   useEffect(() => {
-    setSearchedCards(dummyCards);
-  }, []);
+    if (categories && categories.length > 0) {
+      setSearchedCards(categories[0].cards || []);
+      setActiveCategory(categories[0]);
+    } else {
+      setSearchedCards(dummyCards);
+    }
+  }, [categories]);
+
+  // Create a useEffect hook to set the dummyCards as searchedCards on component mount
+  // useEffect(() => {
+  //   setSearchedCards(dummyCards);
+  // }, []);
 
   // set up useEffect hook to save `savedCardIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
@@ -175,6 +191,25 @@ const SearchCards = () => {
             ? `Viewing ${searchedCards.length} results:`
             : "Search for a card to begin"}
         </h2>
+
+        {/* CategoryMenu component to display categories */}
+        <CategoryMenu
+          categories={categories}
+          activeCategory={activeCategory} // Pass the categoryId as activeCategory
+          handleCategoryClick={(categoryId) => {
+            // Update the activeCategory state with the categoryId
+            setActiveCategory(categoryId);
+            // Filter the selected category's cards and set searchedCards accordingly
+            const selectedCategory = categories.find(
+              (category) => category.id === categoryId
+            );
+            if (selectedCategory) {
+              setSearchedCards(selectedCategory.cards);
+            } else {
+              setSearchedCards(dummyCards);
+            }
+          }}
+        />
         <Row>
           {searchedCards.length > 0
             ? searchedCards.map((card) => {
@@ -195,10 +230,7 @@ const SearchCards = () => {
                         {authService.loggedIn() && (
                           <Button
                             className="btn-block btn-info"
-                            onClick={() => {
-                              console.log("clicked card:", card);
-                              handleSaveCard(card.cardId);
-                            }}
+                            onClick={() => handleSaveCard(card.cardId)}
                           >
                             {savedCardIds?.some(
                               (savedCardId) => savedCardId === card.cardId
@@ -229,13 +261,7 @@ const SearchCards = () => {
                         <Card.Text>{card.description}</Card.Text>
                         <Button
                           className="btn-block btn-info"
-                          onClick={() => {
-                            console.log(
-                              "Clicked on Save Button for Card ID:",
-                              card.cardId
-                            );
-                            handleSaveCard(card.cardId);
-                          }}
+                          onClick={() => handleSaveCard(card.cardId)}
                         >
                           {savedCardIds?.some(
                             (savedCardId) => savedCardId === card.cardId

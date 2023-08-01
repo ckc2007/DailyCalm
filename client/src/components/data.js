@@ -49,35 +49,35 @@ export const categories = [
         title: "Ask for help",
         description:
           "Don't hesitate to seek support from friends, family, or professionals.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/help.jpg",
       },
       {
         cardId: "card_7",
         title: "Unplug from social media",
         description:
           "Take a break from social media to reduce digital overwhelm.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/Unplug.jpeg",
       },
       {
         cardId: "card_8",
         title: "Start a new hobby",
         description:
           "Explore new interests and hobbies to stimulate your mind.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/hobby.jpeg",
       },
       {
         cardId: "card_9",
         title: "Get a good night’s sleep",
         description:
           "Prioritize sleep for better mental clarity and overall health.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/sleep.jpeg",
       },
       {
         cardId: "card_10",
         title: "Laugh!",
         description:
           "Watch a comedy or spend time with people who make you laugh.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/laugh.jpeg",
       },
     ],
   },
@@ -90,34 +90,34 @@ export const categories = [
         title: "Go for a walk",
         description:
           "Take a walk to improve physical fitness and clear your mind.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/walk.jpeg",
       },
       {
         cardId: "card_12",
         title: "Take a long shower or bath",
         description:
           "Indulge in a relaxing shower or bath to rejuvenate your body.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/bath.jpeg",
       },
       {
         cardId: "card_13",
         title: "Sit in the sunlight",
         description:
           "Spend some time outdoors in the sunlight for a mood boost.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/sunshine.jpeg",
       },
       {
         cardId: "card_14",
         title: "Do some yoga",
         description:
           "Practice yoga to improve flexibility, strength, and relaxation.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/yoga.jpeg",
       },
       {
         cardId: "card_15",
         title: "Eat a healthy meal",
         description: "Nourish your body with a balanced and nutritious meal.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/healthymeal.jpeg",
       },
     ],
   },

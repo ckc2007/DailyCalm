@@ -8,35 +8,35 @@ export const categories = [
         title: "Pet your dog or cat",
         description:
           "Spending time with pets can be comforting and reduce stress.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/pet.jpeg",
       },
       {
         cardId: "card_2",
         title: "Talk to a therapist",
         description:
           "Seek professional help to discuss and work through your emotions.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/therapist.jpeg",
       },
       {
         cardId: "card_3",
         title: "Have a “Lazy” Day",
         description:
           "Take a day off to relax and unwind without feeling guilty.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/lazy.jpeg",
       },
       {
         cardId: "card_4",
         title: "Do an activity that brings you joy",
         description:
           "Engage in hobbies or activities that make you happy and fulfilled.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/joy.jpeg",
       },
       {
         cardId: "card_5",
         title: "Think a positive thought every hour",
         description:
           "Practice positive thinking to improve your mood and outlook.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/positive.jpeg",
       },
     ],
   },

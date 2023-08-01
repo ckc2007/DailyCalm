@@ -140,7 +140,7 @@ const SearchCards = () => {
     try {
       const savedCard = await saveCard(cardToSave, token);
       // Handle the response from saveCard if needed
-      console.log("Card saved:", savedCard);
+      console.log("Calm saved:", savedCard);
 
       // Show the saved message only when saving for the first time
       if (!savedCardIds.includes(cardId)) {
@@ -154,7 +154,7 @@ const SearchCards = () => {
     } catch (err) {
       console.error(err);
       // Handle the error message if needed
-      console.log("Error saving the card:", err.message);
+      console.log("Error saving the Calm:", err.message);
     }
   };
 
@@ -162,7 +162,7 @@ const SearchCards = () => {
     <>
       <div className="text-light bg-dark p-5">
         <Container>
-          <h1>Search for Cards!</h1>
+          <h1>Search for Calms!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Row>
               <Col xs={12} md={8}>
@@ -172,7 +172,7 @@ const SearchCards = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type="text"
                   size="lg"
-                  placeholder="Search for a card"
+                  placeholder="Search for a Calm"
                 />
               </Col>
               <Col xs={12} md={4}>
@@ -189,7 +189,7 @@ const SearchCards = () => {
         <h2 className="pt-5">
           {searchedCards.length
             ? `Viewing ${searchedCards.length} results:`
-            : "Search for a card to begin"}
+            : "Search for a Calm to begin"}
         </h2>
 
         {/* CategoryMenu component to display categories */}
@@ -235,8 +235,8 @@ const SearchCards = () => {
                             {savedCardIds?.some(
                               (savedCardId) => savedCardId === card.cardId
                             )
-                              ? "This card has already been saved!"
-                              : "Save this Card!"}
+                              ? "This Calm has already been saved!"
+                              : "Save this Calm!"}
                           </Button>
                         )}
                       </Card.Body>
@@ -266,8 +266,8 @@ const SearchCards = () => {
                           {savedCardIds?.some(
                             (savedCardId) => savedCardId === card.cardId
                           )
-                            ? "This card has already been saved!"
-                            : "Save this Card!"}
+                            ? "This Calm has already been saved!"
+                            : "Save this Calm!"}
                         </Button>
                       </Card.Body>
                     </Card>

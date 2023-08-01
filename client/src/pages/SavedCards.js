@@ -73,7 +73,7 @@ const SavedCards = () => {
     <>
       <div fluid className="text-light bg-dark p-5">
         <Container>
-          <h1>Viewing saved cards!</h1>
+          <h1>Viewing saved Calms!</h1>
         </Container>
       </div>
       <Container>
@@ -104,7 +104,7 @@ const SavedCards = () => {
                       className="btn-block btn-danger"
                       onClick={() => handleDeleteCard(card.cardId)}
                     >
-                      Delete this Card!
+                      Delete this Calm!
                     </Button>
                   </Card.Body>
                 </Card>

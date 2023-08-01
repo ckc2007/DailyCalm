@@ -15,19 +15,19 @@ const AppNavbar = () => {
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand as={Link} to="/">
-            Cards Search
+            Calms Search
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar" />
           <Navbar.Collapse id="navbar" className="d-flex flex-row-reverse">
             <Nav className="ml-auto d-flex">
               <Nav.Link as={Link} to="/">
-                Search For Cards
+                Search For Calms
               </Nav.Link>
               {/* if user is logged in show saved cards, play, and logout */}
               {authService.loggedIn() ? (
                 <>
                   <Nav.Link as={Link} to="/saved">
-                    See Your Cards
+                    See Your Calms
                   </Nav.Link>
                   {/* Add the "Play" tab */}
                   <Nav.Link as={Link} to="/play">

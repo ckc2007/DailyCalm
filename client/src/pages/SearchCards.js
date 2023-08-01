@@ -235,7 +235,7 @@ const SearchCards = () => {
                             {savedCardIds?.some(
                               (savedCardId) => savedCardId === card.cardId
                             )
-                              ? "This Calm has already been saved!"
+                              ? "Calm saved!"
                               : "Save this Calm!"}
                           </Button>
                         )}
@@ -266,7 +266,7 @@ const SearchCards = () => {
                           {savedCardIds?.some(
                             (savedCardId) => savedCardId === card.cardId
                           )
-                            ? "This Calm has already been saved!"
+                            ? "Calm saved!"
                             : "Save this Calm!"}
                         </Button>
                       </Card.Body>

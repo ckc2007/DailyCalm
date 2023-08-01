@@ -136,8 +136,8 @@ const PlayPage = () => {
               <Card>
                 <Card.Body>
                   <p>
-                    To start your self-care routine, please search for cards and
-                    save them. You can search for cards <Link to="/">here</Link>
+                    To start your self-care routine, please search for Calms and
+                    save them. You can search for Calms <Link to="/">here</Link>
                     .
                   </p>
                 </Card.Body>

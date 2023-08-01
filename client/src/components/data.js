@@ -49,35 +49,35 @@ export const categories = [
         title: "Ask for help",
         description:
           "Don't hesitate to seek support from friends, family, or professionals.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/help.jpeg",
       },
       {
         cardId: "card_7",
         title: "Unplug from social media",
         description:
           "Take a break from social media to reduce digital overwhelm.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/Unplug.jpeg",
       },
       {
         cardId: "card_8",
         title: "Start a new hobby",
         description:
           "Explore new interests and hobbies to stimulate your mind.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/hobby.jpeg",
       },
       {
         cardId: "card_9",
         title: "Get a good night’s sleep",
         description:
           "Prioritize sleep for better mental clarity and overall health.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/sleep.jpeg",
       },
       {
         cardId: "card_10",
         title: "Laugh!",
         description:
           "Watch a comedy or spend time with people who make you laugh.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/laugh.jpeg",
       },
     ],
   },

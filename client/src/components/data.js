@@ -90,34 +90,34 @@ export const categories = [
         title: "Go for a walk",
         description:
           "Take a walk to improve physical fitness and clear your mind.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/walk.jpeg",
       },
       {
         cardId: "card_12",
         title: "Take a long shower or bath",
         description:
           "Indulge in a relaxing shower or bath to rejuvenate your body.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/bath.jpeg",
       },
       {
         cardId: "card_13",
         title: "Sit in the sunlight",
         description:
           "Spend some time outdoors in the sunlight for a mood boost.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/sunshine.jpeg",
       },
       {
         cardId: "card_14",
         title: "Do some yoga",
         description:
           "Practice yoga to improve flexibility, strength, and relaxation.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/yoga.jpeg",
       },
       {
         cardId: "card_15",
         title: "Eat a healthy meal",
         description: "Nourish your body with a balanced and nutritious meal.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/healthymeal.jpeg",
       },
     ],
   },

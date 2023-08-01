@@ -49,7 +49,7 @@ export const categories = [
         title: "Ask for help",
         description:
           "Don't hesitate to seek support from friends, family, or professionals.",
-        image: "images/help.jpg",
+        image: "images/help.jpeg",
       },
       {
         cardId: "card_7",

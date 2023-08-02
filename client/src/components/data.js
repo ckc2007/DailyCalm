@@ -208,33 +208,33 @@ export const categories = [
         title: "Set a S.M.A.R.T. Goal for yourself",
         description:
           "Define specific, measurable, achievable, relevant, and time-bound goals.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/smart.jpeg",
       },
       {
         cardId: "card_27",
         title: "Read a book about a new subject",
         description: "Expand your knowledge and interests through reading.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/read.jpeg",
       },
       {
         cardId: "card_28",
         title: "Take a break outside",
         description:
           "Step outside to refresh your mind and boost productivity.",
-        image: "https://dummyimage.com/200x300",
+        image:"images/outside.jpeg",
       },
       {
         cardId: "card_29",
         title: "Pack a healthy lunch",
         description: "Prepare a nutritious lunch to fuel your workday.",
-        image: "https://dummyimage.com/200x300",
+        image:"images/healthy.jpeg",
       },
       {
         cardId: "card_30",
         title: "Decorate your desk",
         description:
           "Personalize your workspace to create a positive and inspiring environment.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/desk.jpeg",
       },
     ],
   },

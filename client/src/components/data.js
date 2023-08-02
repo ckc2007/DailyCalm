@@ -49,7 +49,7 @@ export const categories = [
         title: "Ask for help",
         description:
           "Don't hesitate to seek support from friends, family, or professionals.",
-        image: "images/help.jpeg",
+        image: "images/help.jpg",
       },
       {
         cardId: "card_7",
@@ -130,33 +130,33 @@ export const categories = [
         title: "Have and or make dinner with someone",
         description:
           "Share a meal with a friend or loved one to strengthen bonds.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/dinner.jpeg",
       },
       {
         cardId: "card_17",
         title: "Go dancing",
         description: "Dance to your favorite music to uplift your spirits.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/dance.jpeg",
       },
       {
         cardId: "card_18",
         title: "Have a game night with a friend(s)",
         description: "Organize a game night for fun and social interaction.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/game.jpg",
       },
       {
         cardId: "card_19",
         title: "Write a card and mail it to a loved one",
         description:
           "Send a handwritten card to express your thoughts and love.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/card.jpeg",
       },
       {
         cardId: "card_20",
         title: "Call a friend or family member",
         description:
           "Connect with someone you care about through a phone call.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/friend.jpeg",
       },
     ],
   },
@@ -169,33 +169,33 @@ export const categories = [
         title: "Practice gratitude",
         description:
           "Reflect on things you're grateful for to cultivate positivity.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/gratitude.jpeg",
       },
       {
         cardId: "card_22",
         title: "Start a journal",
         description: "Keep a journal to explore your thoughts and emotions.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/journal.jpeg",
       },
       {
         cardId: "card_23",
         title: "Meditation",
         description: "Meditate to achieve a sense of calm and inner peace.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/meditation.jpeg",
       },
       {
         cardId: "card_24",
         title: "Volunteer or help someone",
         description:
           "Contribute to the community and find fulfillment in helping others.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/volunteer.jpeg",
       },
       {
         cardId: "card_25",
         title: "Speak to a spiritual leader",
         description:
           "Seek guidance and support from a spiritual mentor or advisor.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/speak.jpeg",
       },
     ],
   },
@@ -208,33 +208,33 @@ export const categories = [
         title: "Set a S.M.A.R.T. Goal for yourself",
         description:
           "Define specific, measurable, achievable, relevant, and time-bound goals.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/smart.jpeg",
       },
       {
         cardId: "card_27",
         title: "Read a book about a new subject",
         description: "Expand your knowledge and interests through reading.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/read.jpeg",
       },
       {
         cardId: "card_28",
         title: "Take a break outside",
         description:
           "Step outside to refresh your mind and boost productivity.",
-        image: "https://dummyimage.com/200x300",
+        image:"images/outside.jpeg",
       },
       {
         cardId: "card_29",
         title: "Pack a healthy lunch",
         description: "Prepare a nutritious lunch to fuel your workday.",
-        image: "https://dummyimage.com/200x300",
+        image:"images/healthy.jpeg",
       },
       {
         cardId: "card_30",
         title: "Decorate your desk",
         description:
           "Personalize your workspace to create a positive and inspiring environment.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/desk.jpeg",
       },
     ],
   },

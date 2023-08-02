@@ -4,6 +4,7 @@ import SearchCards from "./pages/SearchCards";
 import SavedCards from "./pages/SavedCards";
 import PlayPage from "./pages/PlayPage"; // Import PlayPage
 import Navbar from "./components/Navbar";
+import 'bulma/css/bulma.min.css';
 
 // import logo from './logo.svg';
 // import './App.css';

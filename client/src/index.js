@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import { ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router } from "react-router-dom";
 // adding bootstrap back for now - chorney
-import "bootstrap/dist/css/bootstrap.min.css";
+// changed to bulma - Sean
+import 'bulma/css/bulma.min.css';
 import "./index.css";
 import App from "./App";
 import ApolloClient from "./utils/ApolloClient";

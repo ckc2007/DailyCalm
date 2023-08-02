@@ -3,7 +3,6 @@ import { fetchSavedCards } from "../utils/API";
 import Confetti from "react-confetti";
 import { Link } from "react-router-dom";
 import { authService } from "../utils/auth";
-import { Card, Button, Container, Row, Col } from "react-bootstrap";
 
 const PlayPage = () => {
   const [savedCards, setSavedCards] = useState([]);
@@ -71,80 +70,96 @@ const PlayPage = () => {
   return (
     <>
       {/* Goal input box */}
-      <Container>
-        <Row>
-          <Col md={6} className="mx-auto">
-            <Card>
-              <Card.Body>
-                <div>
-                  <label htmlFor="goal">What is your goal for today?</label>
+      <div className="container">
+        <div className="columns is-centered">
+          <div className="column is-half">
+            <div className="box">
+              <div className="field">
+                <label htmlFor="goal" className="label">
+                  What is your goal for today?
+                </label>
+                <div className="control">
                   <input
                     type="number"
                     id="goal"
                     name="goal"
                     value={goal}
                     onChange={handleGoalChange}
+                    className="input"
                   />
                 </div>
-                {/* Display the progress */}
-                <div>
+              </div>
+              {/* Display the progress */}
+              <div className="content">
+                <p>
                   Progress: {score}/{goal}
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Display confetti animation when the "+" button is clicked */}
       {confettiActive && <Confetti />}
 
       {/* Display the current card based on currentCardIndex */}
       {savedCards.length > 0 ? (
-        <Container>
-          <Row>
-            <Col md={4} className="mx-auto">
-              <Card>
-                {savedCards[currentCardIndex].image ? (
-                  <Card.Img
-                    src={savedCards[currentCardIndex].image}
-                    alt={`The cover for ${savedCards[currentCardIndex].title}`}
-                    variant="top"
-                  />
-                ) : (
-                  // If there's no image, display a placeholder image or other content
-                  <div className="image-placeholder">No Image Available</div>
-                )}
-                <Card.Body>
-                  <Card.Title>{savedCards[currentCardIndex].title}</Card.Title>
-                  <Card.Text>
-                    {savedCards[currentCardIndex].description}
-                  </Card.Text>
-                  {/* Add a "+" button to update the score */}
-                  <Button onClick={handleAddScore}>+</Button>
-                  {/* Add a "Next" button to display the next card */}
-                  <Button onClick={handleNextClick}>Next</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
+        <div className="container">
+          <div className="columns is-centered">
+            <div className="column is-half">
+              <div className="box">
+                <div className="card">
+                  {savedCards[currentCardIndex].image ? (
+                    <div className="card-image">
+                      <figure className="image">
+                        <img
+                          src={savedCards[currentCardIndex].image}
+                          alt={`The cover for ${savedCards[currentCardIndex].title}`}
+                        />
+                      </figure>
+                    </div>
+                  ) : (
+                    // If there's no image, display a placeholder image or other content
+                    <div className="card-content">
+                      <div className="content">No Image Available</div>
+                    </div>
+                  )}
+                  <div className="card-content">
+                    <p className="title is-4">{savedCards[currentCardIndex].title}</p>
+                    <p>{savedCards[currentCardIndex].description}</p>
+                  </div>
+                  <div className="card-footer">
+                    {/* Add a "+" button to update the score */}
+                    <button className="button is-success" onClick={handleAddScore}>
+                      +
+                    </button>
+                    {/* Add a "Next" button to display the next card */}
+                    <button className="button is-primary" onClick={handleNextClick}>
+                      Next
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       ) : (
-        <Container>
-          <Row>
-            <Col md={6} className="mx-auto">
-              <Card>
-                <Card.Body>
+        <div className="container">
+          <div className="columns is-centered">
+            <div className="column is-half">
+              <div className="box">
+                <div className="content">
                   <p>
                     To start your self-care routine, please search for Calms and
                     save them. You can search for Calms <Link to="/">here</Link>
                     .
                   </p>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );

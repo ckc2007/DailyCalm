@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 
 import { authService } from "../utils/auth";
 import { saveCard } from "../utils/API";
@@ -7,6 +6,7 @@ import { saveCardIds, getSavedCardIds } from "../utils/localStorage";
 
 import { categories } from "../components/data"; // Import the categories array from data.js
 import CategoryMenu from "../components/categoryMenu"; // Import the CategoryMenu component from categoryMenu.js
+
 
 // import { GET_ME } from "../utils/queries"; // Import the GET_ME query if you haven't already
 // import { useQuery } from "@apollo/client"; // Import useQuery hook
@@ -160,33 +160,38 @@ const SearchCards = () => {
 
   return (
     <>
-      <div className="text-light bg-dark p-5">
-        <Container>
-          <h1>Search for Calms!</h1>
-          <Form onSubmit={handleFormSubmit}>
-            <Row>
-              <Col xs={12} md={8}>
-                <Form.Control
-                  name="searchInput"
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                  type="text"
-                  size="lg"
-                  placeholder="Search for a Calm"
-                />
-              </Col>
-              <Col xs={12} md={4}>
-                <Button type="submit" variant="success" size="lg">
-                  Submit Search
-                </Button>
-              </Col>
-            </Row>
-          </Form>
-        </Container>
-      </div>
+      <section className="hero is-dark is-bold is-small">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title">Search for Calms!</h1>
+            <form onSubmit={handleFormSubmit}>
+              <div className="columns">
+                <div className="column is-8">
+                  <input
+                    name="searchInput"
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                    type="text"
+                    className="input is-large"
+                    placeholder="Search for a Calm"
+                  />
+                </div>
+                <div className="column is-4">
+                  <button
+                    type="submit"
+                    className="button is-success is-large is-fullwidth"
+                  >
+                    Submit Search
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
 
-      <Container>
-        <h2 className="pt-5">
+      <div className="container">
+        <h2 className="subtitle is-4 mt-5">
           {searchedCards.length
             ? `Viewing ${searchedCards.length} results:`
             : "Search for a Calm to begin"}
@@ -210,26 +215,35 @@ const SearchCards = () => {
             }
           }}
         />
-        <Row>
+        <div className="columns is-multiline">
           {searchedCards.length > 0
             ? searchedCards.map((card) => {
                 return (
-                  <Col key={card.cardId} md="4">
-                    <Card key={card.cardId} border="dark">
+                  <div key={card.cardId} className="column is-4">
+                    <div className="card">
                       {card.image ? (
-                        <Card.Img
-                          src={card.image}
-                          alt={`The cover for ${card.title}`}
-                          variant="top"
-                        />
+                        <div className="card-image">
+                          <figure className="image">
+                            <img
+                              src={card.image}
+                              alt={`The cover for ${card.title}`}
+                            />
+                          </figure>
+                        </div>
                       ) : null}
-                      <Card.Body>
-                        <Card.Title>{card.title}</Card.Title>
-                        <p className="small">Date: {card.date}</p>
-                        <Card.Text>{card.description}</Card.Text>
+                      <div className="card-content">
+                        <p className="title is-5">{card.title}</p>
+                        <p className="subtitle is-6">Date: {card.date}</p>
+                        <p>{card.description}</p>
                         {authService.loggedIn() && (
-                          <Button
-                            className="btn-block btn-info"
+                          <button
+                            className={`button is-block ${
+                              savedCardIds?.some(
+                                (savedCardId) => savedCardId === card.cardId
+                              )
+                                ? "is-info"
+                                : "is-primary"
+                            }`}
                             onClick={() => handleSaveCard(card.cardId)}
                           >
                             {savedCardIds?.some(
@@ -237,30 +251,39 @@ const SearchCards = () => {
                             )
                               ? "Calm saved!"
                               : "Save this Calm!"}
-                          </Button>
+                          </button>
                         )}
-                      </Card.Body>
-                    </Card>
-                  </Col>
+                      </div>
+                    </div>
+                  </div>
                 );
               })
             : // Display the dummy cards when no searched cards are available
               dummyCards.map((card) => {
                 return (
-                  <Col key={card.cardId} md="4">
-                    <Card key={card.cardId} border="dark">
+                  <div key={card.cardId} className="column is-4">
+                    <div className="card">
                       {card.image ? (
-                        <Card.Img
-                          src={card.image}
-                          alt={`The cover for ${card.title}`}
-                          variant="top"
-                        />
+                        <div className="card-image">
+                          <figure className="image">
+                            <img
+                              src={card.image}
+                              alt={`The cover for ${card.title}`}
+                            />
+                          </figure>
+                        </div>
                       ) : null}
-                      <Card.Body>
-                        <Card.Title>{card.title}</Card.Title>
-                        <Card.Text>{card.description}</Card.Text>
-                        <Button
-                          className="btn-block btn-info"
+                      <div className="card-content">
+                        <p className="title is-5">{card.title}</p>
+                        <p>{card.description}</p>
+                        <button
+                          className={`button is-block ${
+                            savedCardIds?.some(
+                              (savedCardId) => savedCardId === card.cardId
+                            )
+                              ? "is-info"
+                              : "is-primary"
+                          }`}
                           onClick={() => handleSaveCard(card.cardId)}
                         >
                           {savedCardIds?.some(
@@ -268,14 +291,14 @@ const SearchCards = () => {
                           )
                             ? "Calm saved!"
                             : "Save this Calm!"}
-                        </Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 );
               })}
-        </Row>
-      </Container>
+        </div>
+      </div>
       {showSavedMessage && <div>Saved!</div>}
     </>
   );

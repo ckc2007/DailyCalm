@@ -1,6 +1,4 @@
-// see SignupForm.js for comments
 import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../graphql/mutations";
 import { authService } from "../utils/auth";
@@ -56,52 +54,60 @@ const LoginForm = () => {
 
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Alert
-          dismissible
-          onClose={() => setShowAlert(false)}
-          show={showAlert}
-          variant="danger"
-        >
-          Something went wrong with your login credentials!
-        </Alert>
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Your email"
-            name="email"
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Email is required!
-          </Form.Control.Feedback>
-        </Form.Group>
+      <form noValidate className="box" onSubmit={handleFormSubmit}>
+        {showAlert && (
+          <div className="notification is-danger">
+            Something went wrong with your login credentials!
+          </div>
+        )}
+        <div className="field">
+          <label htmlFor="email" className="label">
+            Email
+          </label>
+          <div className="control">
+            <input
+              type="text"
+              placeholder="Your email"
+              name="email"
+              className="input"
+              onChange={handleInputChange}
+              value={userFormData.email}
+              required
+            />
+            <p className="help is-danger">
+              {validated && !userFormData.email && "Email is required!"}
+            </p>
+          </div>
+        </div>
 
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Your password"
-            name="password"
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Button
+        <div className="field">
+          <label htmlFor="password" className="label">
+            Password
+          </label>
+          <div className="control">
+            <input
+              type="password"
+              placeholder="Your password"
+              name="password"
+              className="input"
+              onChange={handleInputChange}
+              value={userFormData.password}
+              required
+            />
+            <p className="help is-danger">
+              {validated && !userFormData.password && "Password is required!"}
+            </p>
+          </div>
+        </div>
+
+        <button
           disabled={!(userFormData.email && userFormData.password)}
           type="submit"
-          variant="success"
+          className="button is-success"
         >
           Submit
-        </Button>
-      </Form>
+        </button>
+      </form>
     </>
   );
 };

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Container, Card, Button, Row, Col } from "react-bootstrap";
 
 import { getMe, deleteCard } from "../utils/API";
 import { authService } from "../utils/auth";
@@ -46,7 +45,7 @@ const SavedCards = () => {
 
     try {
       await deleteCard(cardId, token);
-  
+
       // If the deleteCard function does not throw an error,
       // it means the card was deleted successfully.
       // So, update the user data and remove the card's id from localStorage.
@@ -71,48 +70,55 @@ const SavedCards = () => {
 
   return (
     <>
-      <div fluid className="text-light bg-dark p-5">
-        <Container>
-          <h1>Viewing saved Calms!</h1>
-        </Container>
-      </div>
-      <Container>
-        <h2 className="pt-5">
+      <section className="hero is-dark is-bold is-small">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title">Viewing saved Calms!</h1>
+          </div>
+        </div>
+      </section>
+      <div className="container">
+        <h2 className="subtitle is-4 mt-5">
           {userData.savedCards.length
             ? `Viewing ${userData.savedCards.length} saved ${
                 userData.savedCards.length === 1 ? "card" : "cards"
               }:`
             : "You have no saved cards!"}
         </h2>
-        <Row>
+        <div className="columns is-multiline">
           {userData.savedCards.map((card) => {
             return (
-              <Col key={card.cardId} md="4">
-                <Card key={card.cardId} border="dark">
+              <div key={card.cardId} className="column is-4">
+                <div className="card">
                   {card.image ? (
-                    <Card.Img
-                      src={card.image}
-                      alt={`The cover for ${card.title}`}
-                      variant="top"
-                    />
+                    <div className="card-image">
+                      <figure className="image">
+                        <img
+                          src={card.image}
+                          alt={`The cover for ${card.title}`}
+                        />
+                      </figure>
+                    </div>
                   ) : null}
-                  <Card.Body>
-                    <Card.Title>{card.title}</Card.Title>
-                    <p className="small">Date: {card.date}</p>
-                    <Card.Text>{card.description}</Card.Text>
-                    <Button
-                      className="btn-block btn-danger"
+                  <div className="card-content">
+                    <p className="title is-5">{card.title}</p>
+                    <p className="subtitle is-6">Date: {card.date}</p>
+                    <p>{card.description}</p>
+                  </div>
+                  <footer className="card-footer">
+                    <button
+                      className="button is-danger is-fullwidth"
                       onClick={() => handleDeleteCard(card.cardId)}
                     >
                       Delete this Calm!
-                    </Button>
-                  </Card.Body>
-                </Card>
-              </Col>
+                    </button>
+                  </footer>
+                </div>
+              </div>
             );
           })}
-        </Row>
-      </Container>
+        </div>
+      </div>
     </>
   );
 };

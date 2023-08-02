@@ -169,33 +169,33 @@ export const categories = [
         title: "Practice gratitude",
         description:
           "Reflect on things you're grateful for to cultivate positivity.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/gratitude.jpeg",
       },
       {
         cardId: "card_22",
         title: "Start a journal",
         description: "Keep a journal to explore your thoughts and emotions.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/journal.jpeg",
       },
       {
         cardId: "card_23",
         title: "Meditation",
         description: "Meditate to achieve a sense of calm and inner peace.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/meditation.jpeg",
       },
       {
         cardId: "card_24",
         title: "Volunteer or help someone",
         description:
           "Contribute to the community and find fulfillment in helping others.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/volunteer.jpeg",
       },
       {
         cardId: "card_25",
         title: "Speak to a spiritual leader",
         description:
           "Seek guidance and support from a spiritual mentor or advisor.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/speak.jpeg",
       },
     ],
   },

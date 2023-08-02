@@ -247,32 +247,32 @@ export const categories = [
         title: "Cancel a recurring charge for something you’re not using",
         description:
           "Review your subscriptions and eliminate unnecessary expenses.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/cancel.jpeg",
       },
       {
         cardId: "card_32",
         title: "Journal about your financial goals",
         description: "Write down your financial aspirations and plans.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/goal.jpg",
       },
       {
         cardId: "card_33",
         title: "Make an extra debt payment",
         description: "Take a step toward financial freedom by paying off debt.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/payment.jpeg",
       },
       {
         cardId: "card_34",
         title: "Shop for insurance",
         description:
           "Review and compare insurance options for better coverage.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/insurance.jpg",
       },
       {
         cardId: "card_35",
         title: "Ask for a raise",
         description: "Advocate for yourself and negotiate a higher salary.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/raise.jpg",
       },
     ],
   },

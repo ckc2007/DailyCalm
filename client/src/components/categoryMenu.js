@@ -1,30 +1,28 @@
 import React from "react";
-import { Container, Col, Card, Row } from "react-bootstrap";
 import { categories } from "./data"; // Import the categories
 
 const CategoryMenu = ({ activeCategory, handleCategoryClick }) => {
   return (
     <>
-      <Container>
-        <Row>
+      <div className="container">
+        <div className="columns">
           {categories.map((category) => (
             <div
               key={category.id}
-              onClick={() => handleCategoryClick(category.id)} // Pass the entire category object - debug here
-              className={`categoryCard ${
+              onClick={() => handleCategoryClick(category.id)}
+              className={`column categoryCard ${
                 activeCategory === category.id ? "active" : ""
               }`}
             >
-              {/* You can use a Card component here, or a custom styled component */}
-              <Card>
-                <Card.Body>
-                  <Card.Title>{category.name}</Card.Title>
-                </Card.Body>
-              </Card>
+              <div className="card">
+                <div className="card-content">
+                  <p className="title">{category.name}</p>
+                </div>
+              </div>
             </div>
           ))}
-        </Row>
-      </Container>
+        </div>
+      </div>
     </>
   );
 };

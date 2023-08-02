@@ -49,7 +49,7 @@ export const categories = [
         title: "Ask for help",
         description:
           "Don't hesitate to seek support from friends, family, or professionals.",
-        image: "images/help.jpeg",
+        image: "images/help.jpg",
       },
       {
         cardId: "card_7",
@@ -130,33 +130,33 @@ export const categories = [
         title: "Have and or make dinner with someone",
         description:
           "Share a meal with a friend or loved one to strengthen bonds.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/dinner.jpeg",
       },
       {
         cardId: "card_17",
         title: "Go dancing",
         description: "Dance to your favorite music to uplift your spirits.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/dance.jpeg",
       },
       {
         cardId: "card_18",
         title: "Have a game night with a friend(s)",
         description: "Organize a game night for fun and social interaction.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/game.jpg",
       },
       {
         cardId: "card_19",
         title: "Write a card and mail it to a loved one",
         description:
           "Send a handwritten card to express your thoughts and love.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/card.jpeg",
       },
       {
         cardId: "card_20",
         title: "Call a friend or family member",
         description:
           "Connect with someone you care about through a phone call.",
-        image: "https://dummyimage.com/200x300",
+        image: "images/friend.jpeg",
       },
     ],
   },

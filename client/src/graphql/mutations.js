@@ -71,3 +71,12 @@ export const ADD_SCORE = gql`
     }
   }
 `;
+
+export const UPDATE_GOAL = gql`
+  mutation UpdateGoal($goal: Int!) {
+    updateGoal(goal: $goal) {
+      _id
+      goal
+    }
+  }
+`;

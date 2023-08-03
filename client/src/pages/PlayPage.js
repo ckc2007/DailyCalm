@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { ADD_SCORE, UPDATE_GOAL } from "../graphql/mutations";
+import { ADD_SCORE, UPDATE_GOAL, CLEAR_SCORE } from "../graphql/mutations";
 import { GET_ME } from "../graphql/queries";
 // TODO: refactor api:
 import { fetchSavedCards } from "../utils/API";

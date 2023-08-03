@@ -38,6 +38,8 @@ export const SAVE_CARD = gql`
         link
         title
       }
+      score
+      goal
     }
   }
 `;
@@ -61,4 +63,11 @@ export const REMOVE_CARD = gql`
   }
 `;
 
-// Chorney working here
+export const ADD_SCORE = gql`
+  mutation AddScore($score: Int!) {
+    addScore(score: $score) {
+      _id
+      score
+    }
+  }
+`;

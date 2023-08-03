@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_SCORE, UPDATE_GOAL} from "../graphql/mutations";
+import { GET_ME } from "../graphql/queries";
+// TODO: refactor api:
 import { fetchSavedCards } from "../utils/API";
 import Confetti from "react-confetti";
 import { Link } from "react-router-dom";

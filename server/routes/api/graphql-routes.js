@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { graphqlHTTP } = require("express-graphql");
 const { typeDefs, resolvers } = require("../../schemas/index");
-console.log(typeDefs, resolvers);
 
 const { authMiddleware } = require("../../utils/auth");
 

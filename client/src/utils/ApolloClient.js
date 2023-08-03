@@ -5,11 +5,8 @@ const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
-// DEBUGGGGGGG - needed to add export?
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("token");
-  // debug the issue here >> not console logging
-  console.log("Token from ApolloClient:", token); // Add this line to log the token
   return {
     headers: {
       ...headers,
@@ -18,9 +15,11 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-// debug
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
+  // only things that get added to cache are queries
+  // if you want the cache to update with score
+  // add code to use mutation >>> wek 21 17/18
   cache: new InMemoryCache(),
 });
 

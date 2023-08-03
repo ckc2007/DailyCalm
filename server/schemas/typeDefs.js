@@ -17,6 +17,8 @@ const typeDefs = gql`
     email: String!
     savedCards: [Card]
     cardCount: Int
+    score: Int!
+    goal: Int!
   }
 
   type Auth {
@@ -35,6 +37,9 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     saveCard(cardData: CardInput!): User
     removeCard(cardId: ID!): User
+    addScore(score: Int!): User
+    updateGoal(goal: Int!): User
+    clearScore: User
   }
 
   input CardInput {

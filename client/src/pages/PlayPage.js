@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useMutation, useQuery } from "@apollo/client";
+import { ADD_SCORE, UPDATE_GOAL, CLEAR_SCORE } from "../graphql/mutations";
+import { GET_ME } from "../graphql/queries";
+// TODO: refactor api:
 import { fetchSavedCards } from "../utils/API";
 import Confetti from "react-confetti";
 import { Link } from "react-router-dom";
@@ -8,8 +12,8 @@ import './PlayPage.css';
 const PlayPage = () => {
   const [savedCards, setSavedCards] = useState([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [score, setScore] = useState(0);
-  const [goal, setGoal] = useState(5);
+  // const [score, setScore] = useState(0);
+  // const [goal, setGoal] = useState(5);
   const [confettiActive, setConfettiActive] = useState(false);
 
   let timer; // Declare the timer variable outside the useEffect hook
@@ -33,11 +37,74 @@ const PlayPage = () => {
   useEffect(() => {
     timer = setInterval(() => {
       setCurrentCardIndex((prevIndex) => (prevIndex + 1) % savedCards.length);
-    }, 30 * 60 * 1000); // 30 minutes in milliseconds
+    }, 30 * 1000); // 30 minutes in milliseconds
 
     // Clean up the setInterval when the component unmounts
     return () => clearInterval(timer);
   }, [savedCards]);
+
+  // Use ADD_SCORE mutation
+  const [addScoreMutation] = useMutation(ADD_SCORE, {
+    update(cache, { data: { addScore: updatedScore } }) {
+      try {
+        const { me } = cache.readQuery({ query: GET_ME });
+        const newScore = updatedScore.score;
+        cache.writeQuery({
+          query: GET_ME,
+          data: {
+            me: {
+              ...me,
+              score: newScore,
+            },
+          },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
+
+  // Use UPDATE_GOAL mutation
+  const [updateGoalMutation] = useMutation(UPDATE_GOAL, {
+    update(cache, { data: { updateGoal: updatedGoal } }) {
+      try {
+        const { me } = cache.readQuery({ query: GET_ME });
+        const newGoal = updatedGoal.goal;
+        cache.writeQuery({
+          query: GET_ME,
+          data: {
+            me: {
+              ...me,
+              goal: newGoal,
+            },
+          },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
+
+  // Use CLEAR_SCORE mutation
+  const [clearScoreMutation] = useMutation(CLEAR_SCORE, {
+    update(cache, { data: { clearScore: updatedScore } }) {
+      try {
+        const { me } = cache.readQuery({ query: GET_ME });
+        const newScore = updatedScore.score;
+        cache.writeQuery({
+          query: GET_ME,
+          data: {
+            me: {
+              ...me,
+              score: newScore,
+            },
+          },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
 
   // Function to handle the "Next" button click
   const handleNextClick = () => {
@@ -45,9 +112,40 @@ const PlayPage = () => {
   };
 
   // Function to handle the "+" button click to update the score and trigger confetti animation
-  const handleAddScore = () => {
-    setScore((prevScore) => prevScore + 1);
-    setConfettiActive(true); // Activate confetti animation
+  const handleAddScore = async () => {
+    try {
+      const scoreValue = 1;
+      console.log("Adding score...");
+      await addScoreMutation({ variables: { score: scoreValue } });
+      console.log("Score added successfully");
+      // setScore((prevScore) => prevScore + 1);
+      setConfettiActive(true);
+    } catch (error) {
+      console.error("Error adding score:", error);
+    }
+  };
+
+  const handleGoalChange = async (e) => {
+    const newGoal = parseInt(e.target.value, 10);
+    // setGoal(newGoal);
+
+    try {
+      console.log("Updating goal...");
+      await updateGoalMutation({ variables: { goal: newGoal } });
+      console.log("Goal updated successfully!");
+    } catch (error) {
+      console.error("Error updating goal:", error);
+    }
+  };
+
+  const handleClearScore = async () => {
+    try {
+      console.log("Clearing score...");
+      await clearScoreMutation();
+      console.log("Score cleared successfully");
+    } catch (error) {
+      console.error("Error clearing score:", error);
+    }
   };
 
   // Function to stop confetti animation after a brief period
@@ -62,11 +160,11 @@ const PlayPage = () => {
     }
   }, [confettiActive]);
 
-  // Function to handle goal input change
-  const handleGoalChange = (e) => {
-    const newGoal = parseInt(e.target.value, 10);
-    setGoal(newGoal);
-  };
+  // Use GET_ME query to read cached data
+  const { data } = useQuery(GET_ME);
+  // Get the user's score and goal from the cached data
+  const score = data?.me?.score || 0; // Default to 0 if data is not available yet
+  const goal = data?.me?.goal || 5; // Default to 5 if data is not available yet
 
   return (
     <>
@@ -101,6 +199,12 @@ const PlayPage = () => {
                   Progress: {score}/{goal}
                 </p>
               </div>
+              {/* "Clear Score" button */}
+              <div className="buttons">
+                <button className="button is-danger" onClick={handleClearScore}>
+                  Clear Score
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -132,16 +236,24 @@ const PlayPage = () => {
                     </div>
                   )}
                   <div className="card-content">
-                    <p className="title is-4">{savedCards[currentCardIndex].title}</p>
+                    <p className="title is-4">
+                      {savedCards[currentCardIndex].title}
+                    </p>
                     <p>{savedCards[currentCardIndex].description}</p>
                   </div>
                   <div className="card-footer">
                     {/* Add a "+" button to update the score */}
-                    <button className="button is-success" onClick={handleAddScore}>
+                    <button
+                      className="button is-success"
+                      onClick={handleAddScore}
+                    >
                       +
                     </button>
                     {/* Add a "Next" button to display the next card */}
-                    <button className="button is-primary" onClick={handleNextClick}>
+                    <button
+                      className="button is-primary"
+                      onClick={handleNextClick}
+                    >
                       Next
                     </button>
                   </div>

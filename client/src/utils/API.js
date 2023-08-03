@@ -1,5 +1,3 @@
-// import { ApolloClient, InMemoryCache } from "@apollo/client";
-// import { authService } from "./auth";
 import client from "./ApolloClient";
 import { GET_ME } from "../graphql/queries";
 import {
@@ -7,14 +5,9 @@ import {
   ADD_USER,
   SAVE_CARD,
   REMOVE_CARD,
+  ADD_SCORE,
+  UPDATE_GOAL,
 } from "../graphql/mutations";
-
-// debug
-// const client = new ApolloClient({
-//   link: authLink,
-//   uri: "/graphql",
-//   cache: new InMemoryCache(),
-// });
 
 export const getMe = async (token) => {
   try {
@@ -50,12 +43,10 @@ export const loginUser = (userData) => {
   });
 };
 
-// API.js
 export const saveCard = async (cardData, token) => {
   try {
     const response = await client.mutate({
       mutation: SAVE_CARD,
-      // was: variables: {cardData}
       variables: { cardData },
       headers: {
         authorization: `Bearer ${token}`,
@@ -96,7 +87,7 @@ export const fetchSavedCards = async (token) => {
       throw new Error("Invalid response or missing data.");
     }
 
-    // Assuming that `me.savedCards` contains the array of user's saved cards
+    // me.savedCards contains the array of user's saved cards
     return response.data.me.savedCards;
   } catch (err) {
     console.error(err);
@@ -104,9 +95,46 @@ export const fetchSavedCards = async (token) => {
   }
 };
 
-// change line 86. modify comment when done
-// export const searchGoogleBooks = (query) => {
-//   return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
-// };
+export const addScore = async (score, token) => {
+  try {
+    const response = await client.mutate({
+      mutation: ADD_SCORE,
+      variables: { score },
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response || !response.data || !response.data.addScore) {
+      throw new Error("Invalid response or missing data.");
+    }
+
+    return response.data.addScore;
+  } catch (err) {
+    console.error(err);
+    throw new Error("Error adding score.");
+  }
+};
+
+export const updateGoal = async (goal, token) => {
+  try {
+    const response = await client.mutate({
+      mutation: UPDATE_GOAL,
+      variables: { goal },
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response || !response.data || !response.data.updateGoal) {
+      throw new Error("Invalid response or missing data.");
+    }
+
+    return response.data.updateGoal;
+  } catch (err) {
+    console.error(err);
+    throw new Error("Error updating goal.");
+  }
+};
 
 export default client;

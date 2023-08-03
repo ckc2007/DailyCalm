@@ -112,6 +112,17 @@ const resolvers = {
         "Please log in to remove a card from your saved cards"
       );
     },
+    addScore: async (_, { score }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          context.user._id,
+          { $inc: { score: score } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("Please log in to update score");
+    },
   },
 };
 

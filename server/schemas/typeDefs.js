@@ -17,6 +17,8 @@ const typeDefs = gql`
     email: String!
     savedCards: [Card]
     cardCount: Int
+    score: Int!
+    goal: Int!
   }
 
   type Auth {

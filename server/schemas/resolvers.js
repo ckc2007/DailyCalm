@@ -135,6 +135,18 @@ const resolvers = {
       }
       throw new AuthenticationError("Please log in to update goal");
     },
+
+    clearScore: async (_, __, context) => {
+      if (context.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          context.user._id,
+          { score: 0 }, // Set the score to 0
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("Please log in to clear score");
+    },
   },
 };
 

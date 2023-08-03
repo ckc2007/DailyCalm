@@ -137,6 +137,16 @@ const PlayPage = () => {
     }
   };
 
+  const handleClearScore = async () => {
+    try {
+      console.log("Clearing score...");
+      await clearScoreMutation();
+      console.log("Score cleared successfully");
+    } catch (error) {
+      console.error("Error clearing score:", error);
+    }
+  };
+
   // Function to stop confetti animation after a brief period
   useEffect(() => {
     if (confettiActive) {

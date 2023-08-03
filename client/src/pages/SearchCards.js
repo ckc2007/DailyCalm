@@ -6,7 +6,7 @@ import { saveCardIds, getSavedCardIds } from "../utils/localStorage";
 
 import { categories } from "../components/data"; // Import the categories array from data.js
 import CategoryMenu from "../components/categoryMenu"; // Import the CategoryMenu component from categoryMenu.js
-
+import "./SearchCards.css";
 
 // import { GET_ME } from "../utils/queries"; // Import the GET_ME query if you haven't already
 // import { useQuery } from "@apollo/client"; // Import useQuery hook
@@ -220,10 +220,10 @@ const SearchCards = () => {
             ? searchedCards.map((card) => {
                 return (
                   <div key={card.cardId} className="column is-4">
-                    <div className="card">
+                    <div className="card custom-card">
                       {card.image ? (
                         <div className="card-image">
-                          <figure className="image">
+                          <figure className="image equal-image">
                             <img
                               src={card.image}
                               alt={`The cover for ${card.title}`}

@@ -1,7 +1,7 @@
 export const categories = [
   {
     id: 1,
-    name: "Emotional Self-Care",
+    name: "Emotional",
     cards: [
       {
         cardId: "card_1",
@@ -42,7 +42,7 @@ export const categories = [
   },
   {
     id: 2,
-    name: "Mental Self-Care",
+    name: "Mental",
     cards: [
       {
         cardId: "card_6",
@@ -83,7 +83,7 @@ export const categories = [
   },
   {
     id: 3,
-    name: "Physical Self-Care",
+    name: "Physical",
     cards: [
       {
         cardId: "card_11",
@@ -123,7 +123,7 @@ export const categories = [
   },
   {
     id: 4,
-    name: "Social Self-Care",
+    name: "Social",
     cards: [
       {
         cardId: "card_16",
@@ -162,7 +162,7 @@ export const categories = [
   },
   {
     id: 5,
-    name: "Spiritual Self-Care",
+    name: "Spiritual",
     cards: [
       {
         cardId: "card_21",
@@ -201,14 +201,14 @@ export const categories = [
   },
   {
     id: 6,
-    name: "Professional and Educational Self-Care",
+    name: "Professional & Educational",
     cards: [
       {
         cardId: "card_26",
         title: "Set a S.M.A.R.T. Goal for yourself",
         description:
           "Define specific, measurable, achievable, relevant, and time-bound goals.",
-        image: "images/smart.jpeg",
+        image: "images/SmartGoals.jpg",
       },
       {
         cardId: "card_27",
@@ -240,7 +240,7 @@ export const categories = [
   },
   {
     id: 7,
-    name: "Financial Self-Care",
+    name: "Financial",
     cards: [
       {
         cardId: "card_31",

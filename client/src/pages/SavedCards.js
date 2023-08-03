@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { getMe, deleteCard } from "../utils/API";
 import { authService } from "../utils/auth";
 import { removeCardId } from "../utils/localStorage";
+import './SavedCards.css'
 
 const SavedCards = () => {
   const [userData, setUserData] = useState({});
@@ -70,15 +71,16 @@ const SavedCards = () => {
 
   return (
     <>
-      <section className="hero is-dark is-bold is-small">
+    <div className="custom-background2">
+      <section className="hero is-bold is-small">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title">Viewing saved Calms!</h1>
+            <h1 className="title has-text-black">Viewing saved Calms!</h1>
           </div>
         </div>
       </section>
       <div className="container">
-        <h2 className="subtitle is-4 mt-5">
+        <h2 className="subtitle is-4 mt-5 has-text-black">
           {userData.savedCards.length
             ? `Viewing ${userData.savedCards.length} saved ${
                 userData.savedCards.length === 1 ? "card" : "cards"
@@ -118,6 +120,7 @@ const SavedCards = () => {
             );
           })}
         </div>
+      </div>
       </div>
     </>
   );

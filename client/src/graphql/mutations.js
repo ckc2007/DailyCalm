@@ -80,3 +80,12 @@ export const UPDATE_GOAL = gql`
     }
   }
 `;
+
+export const CLEAR_SCORE = gql`
+  mutation ClearScore {
+    clearScore {
+      _id
+      score
+    }
+  }
+`;

@@ -63,15 +63,52 @@ const PlayPage = () => {
     },
   });
 
+  // Use UPDATE_GOAL mutation
+  const [updateGoalMutation] = useMutation(UPDATE_GOAL, {
+    update(cache, { data: { updateGoal: updatedGoal } }) {
+      try {
+        const { me } = cache.readQuery({ query: GET_ME });
+        const newGoal = updatedGoal.goal;
+        cache.writeQuery({
+          query: GET_ME,
+          data: {
+            me: {
+              ...me,
+              goal: newGoal,
+            },
+          },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
+
   // Function to handle the "Next" button click
   const handleNextClick = () => {
     setCurrentCardIndex((prevIndex) => (prevIndex + 1) % savedCards.length);
   };
 
   // Function to handle the "+" button click to update the score and trigger confetti animation
-  const handleAddScore = () => {
-    setScore((prevScore) => prevScore + 1);
-    setConfettiActive(true); // Activate confetti animation
+  const handleAddScore = async () => {
+    try {
+      await addScoreMutation();
+      setScore((prevScore) => prevScore + 1);
+      setConfettiActive(true);
+    } catch (error) {
+      console.error("Error adding score:", error);
+    }
+  };
+
+  const handleGoalChange = async (e) => {
+    const newGoal = parseInt(e.target.value, 10);
+    setGoal(newGoal);
+
+    try {
+      await updateGoalMutation({ variables: { goal: newGoal } });
+    } catch (error) {
+      console.error("Error updating goal:", error);
+    }
   };
 
   // Function to stop confetti animation after a brief period
@@ -85,12 +122,6 @@ const PlayPage = () => {
       return () => clearTimeout(confettiTimer);
     }
   }, [confettiActive]);
-
-  // Function to handle goal input change
-  const handleGoalChange = (e) => {
-    const newGoal = parseInt(e.target.value, 10);
-    setGoal(newGoal);
-  };
 
   return (
     <>

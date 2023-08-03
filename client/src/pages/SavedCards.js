@@ -57,13 +57,10 @@ const SavedCards = () => {
       removeCardId(cardId);
     } catch (err) {
       console.error(err);
-      // Handle the error message if needed
       console.log("Error deleting the card:", err.message);
-      // ...
     }
   };
 
-  // if data isn't here yet, say so
   if (!userDataLength) {
     return <h2>LOADING...</h2>;
   }

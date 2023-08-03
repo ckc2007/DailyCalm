@@ -11,8 +11,8 @@ import { authService } from "../utils/auth";
 const PlayPage = () => {
   const [savedCards, setSavedCards] = useState([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [score, setScore] = useState(0);
-  const [goal, setGoal] = useState(5);
+  // const [score, setScore] = useState(0);
+  // const [goal, setGoal] = useState(5);
   const [confettiActive, setConfettiActive] = useState(false);
 
   let timer; // Declare the timer variable outside the useEffect hook
@@ -36,7 +36,7 @@ const PlayPage = () => {
   useEffect(() => {
     timer = setInterval(() => {
       setCurrentCardIndex((prevIndex) => (prevIndex + 1) % savedCards.length);
-    }, 30 * 60 * 1000); // 30 minutes in milliseconds
+    }, 30 * 1000); // 30 minutes in milliseconds
 
     // Clean up the setInterval when the component unmounts
     return () => clearInterval(timer);

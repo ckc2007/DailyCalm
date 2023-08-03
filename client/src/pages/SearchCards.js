@@ -149,10 +149,10 @@ const SearchCards = () => {
 
   return (
     <>
-      <section className="hero is-dark is-bold is-small">
+      <section className="hero is-bold is-small">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title">Search for Calms!</h1>
+            <h1 className="title has-text-white">Search for Calms!</h1>
             <form onSubmit={handleFormSubmit}>
               <div className="columns">
                 <div className="column is-8">
@@ -168,7 +168,7 @@ const SearchCards = () => {
                 <div className="column is-4">
                   <button
                     type="submit"
-                    className="button is-success is-large is-fullwidth"
+                    className="button is-success is-large is-fullwidth is-rounded"
                   >
                     Submit Search
                   </button>
@@ -180,11 +180,7 @@ const SearchCards = () => {
       </section>
 
       <div className="container">
-        <h2 className="subtitle is-4 mt-5">
-          {searchedCards.length
-            ? `Viewing ${searchedCards.length} results:`
-            : "Search for a Calm to begin"}
-        </h2>
+        
 
         {/* CategoryMenu component to display categories */}
         <CategoryMenu
@@ -204,6 +200,11 @@ const SearchCards = () => {
             }
           }}
         />
+        <h2 className="subtitle is-4 mt-5 has-text-white has-text-weight-bold">
+          {searchedCards.length
+            ? `Viewing ${searchedCards.length} results:`
+            : "Search for a Calm to begin"}
+        </h2>
         <div className="columns is-multiline">
           {searchedCards.length > 0
             ? searchedCards.map((card) => {

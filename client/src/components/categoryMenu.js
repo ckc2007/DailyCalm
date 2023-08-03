@@ -1,5 +1,6 @@
 import React from "react";
 import { categories } from "./data"; // Import the categories
+import './categoryMenu.css';
 
 const CategoryMenu = ({ activeCategory, handleCategoryClick }) => {
   return (

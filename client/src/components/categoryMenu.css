@@ -1,0 +1,38 @@
+.categoryCard {
+    width: 100%; /* Set the width of the parent container to 100% */
+    margin: 20px 0; /* Adjust the margins to only top and bottom */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+  
+.categoryCard .card {
+    width: 100%; /* Card stretches to the maximum width of its parent */
+    height: 50%;
+    border-radius: 30%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.6); /* Reduced alpha value to make it more transparent */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+/* other styles remain the same */
+.categoryCard .card .card-content {
+    text-align: center;
+    padding: 10px;
+}
+  
+.categoryCard .card .card-content .title {
+    font-size: 1.5em;
+    font-weight:bolder;
+}
+  
+.categoryCard:hover {
+    transform: scale(1.05);
+}
+  
+.categoryCard.active {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
-import { ADD_SCORE, UPDATE_GOAL} from "../graphql/mutations";
+import { ADD_SCORE, UPDATE_GOAL } from "../graphql/mutations";
 import { GET_ME } from "../graphql/queries";
 // TODO: refactor api:
 import { fetchSavedCards } from "../utils/API";
@@ -41,6 +41,27 @@ const PlayPage = () => {
     // Clean up the setInterval when the component unmounts
     return () => clearInterval(timer);
   }, [savedCards]);
+
+  // Use ADD_SCORE mutation
+  const [addScoreMutation] = useMutation(ADD_SCORE, {
+    update(cache, { data: { addScore: updatedScore } }) {
+      try {
+        const { me } = cache.readQuery({ query: GET_ME });
+        const newScore = updatedScore.score;
+        cache.writeQuery({
+          query: GET_ME,
+          data: {
+            me: {
+              ...me,
+              score: newScore,
+            },
+          },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
 
   // Function to handle the "Next" button click
   const handleNextClick = () => {
@@ -130,16 +151,24 @@ const PlayPage = () => {
                     </div>
                   )}
                   <div className="card-content">
-                    <p className="title is-4">{savedCards[currentCardIndex].title}</p>
+                    <p className="title is-4">
+                      {savedCards[currentCardIndex].title}
+                    </p>
                     <p>{savedCards[currentCardIndex].description}</p>
                   </div>
                   <div className="card-footer">
                     {/* Add a "+" button to update the score */}
-                    <button className="button is-success" onClick={handleAddScore}>
+                    <button
+                      className="button is-success"
+                      onClick={handleAddScore}
+                    >
                       +
                     </button>
                     {/* Add a "Next" button to display the next card */}
-                    <button className="button is-primary" onClick={handleNextClick}>
+                    <button
+                      className="button is-primary"
+                      onClick={handleNextClick}
+                    >
                       Next
                     </button>
                   </div>

@@ -123,6 +123,18 @@ const resolvers = {
       }
       throw new AuthenticationError("Please log in to update score");
     },
+
+    updateGoal: async (_, { goal }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          context.user._id,
+          { goal: goal },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("Please log in to update goal");
+    },
   },
 };
 

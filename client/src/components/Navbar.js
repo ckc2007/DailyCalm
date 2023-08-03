@@ -10,10 +10,10 @@ const AppNavbar = () => {
 
   return (
     <>
-      <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
+      <nav className="navbar has-background-info" role="navigation" aria-label="main navigation">
         <div className="container">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item">
+          <div className="navbar-item button hover is-success is-medium is-rounded">
+            <Link to="/" className="navbar-item button hover is-success is-medium is-rounded">
               Calms Search
             </Link>
             <button className="navbar-burger" aria-label="menu" aria-expanded="false" onClick={() => setShowModal(true)}>
@@ -22,17 +22,18 @@ const AppNavbar = () => {
               <span aria-hidden="true"></span>
             </button>
           </div>
-          <div className="navbar-menu">
+          <div className="navbar-menu ">
             <div className="navbar-end">
-              <Link to="/" className="navbar-item">Search For Calms</Link>
+              <Link to="/" className="navbar-item button hover is-success is-medium is-rounded">Search For Calms</Link>
               {authService.loggedIn() ? (
                 <>
-                  <Link to="/saved" className="navbar-item">See Your Calms</Link>
-                  <Link to="/play" className="navbar-item">Play</Link>
-                  <button className="navbar-item" onClick={authService.logout}>Logout</button>
+                  <Link to="/saved" className="navbar-item button hover is-success is-medium is-rounded">See Your Calms</Link>
+                  <Link to="/play" className="navbar-item button hover is-success is-medium is-rounded">Play</Link>
+                  <button className="navbar-item button hover is-success is-medium is-rounded" onClick={authService.logout}>Logout</button>
                 </>
               ) : (
-                <button className="navbar-item" onClick={() => setShowModal(true)}>Login/Sign Up</button>
+                <button className="navbar button hover is-success is-medium is-rounded" onClick={() => setShowModal(true)}>Login/Sign Up</button>
+
               )}
             </div>
           </div>

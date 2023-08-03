@@ -7,7 +7,7 @@ const {
   saveCard,
   deleteCard,
   login,
-  getRandomSavedCards, // Import the new route handler
+  getRandomSavedCards,
 } = require("../../controllers/user-controller");
 
 // put authMiddleware anywhere we need to send a token for verification of user

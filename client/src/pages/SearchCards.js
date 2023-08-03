@@ -7,12 +7,6 @@ import { saveCardIds, getSavedCardIds } from "../utils/localStorage";
 import { categories } from "../components/data"; // Import the categories array from data.js
 import CategoryMenu from "../components/categoryMenu"; // Import the CategoryMenu component from categoryMenu.js
 
-
-// import { GET_ME } from "../utils/queries"; // Import the GET_ME query if you haven't already
-// import { useQuery } from "@apollo/client"; // Import useQuery hook
-
-// hard coded dummy data - will be replaced by our custom card data
-// TODO: bring in our card data here once we create it
 const dummyCards = [
   {
     cardId: "dummy_card_1",
@@ -53,12 +47,9 @@ const dummyCards = [
 ];
 
 const SearchCards = () => {
-  // create state for holding returned google api data
+  // TODO: remove the search bar feature
   const [searchedCards, setSearchedCards] = useState([]);
-  // create state for holding our search field data
   const [searchInput, setSearchInput] = useState("");
-
-  // create state to hold saved cardId values
   const [savedCardIds, setSavedCardIds] = useState(getSavedCardIds());
 
   // for saved message
@@ -77,13 +68,6 @@ const SearchCards = () => {
     }
   }, [categories]);
 
-  // Create a useEffect hook to set the dummyCards as searchedCards on component mount
-  // useEffect(() => {
-  //   setSearchedCards(dummyCards);
-  // }, []);
-
-  // set up useEffect hook to save `savedCardIds` list to localStorage on component unmount
-  // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
     return () => saveCardIds(savedCardIds);
   }, [savedCardIds]);
@@ -116,8 +100,7 @@ const SearchCards = () => {
     // find the card in `searchedCards` state by the matching id
     const cardToSave = searchedCards.find((card) => card.cardId === cardId);
 
-    // debug >>> reading UNDEFINED
-    console.log("cardToSave:", cardToSave);
+    // console.log("cardToSave:", cardToSave);
 
     // get token
     const token = authService.loggedIn() ? authService.getToken() : null;
@@ -126,15 +109,13 @@ const SearchCards = () => {
       return false;
     }
 
-    // Construct the `cardData` object based on the expected structure from the server
     const cardData = {
       title: cardToSave.title,
       description: cardToSave.description,
       image: cardToSave.image,
-      // Add other properties as needed based on the `CardInput` type in the GraphQL schema
     };
     // debug
-    console.log("cardData:", cardData);
+    // console.log("cardData:", cardData);
 
     // debug
     try {

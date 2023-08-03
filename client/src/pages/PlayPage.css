@@ -1,0 +1,6 @@
+.custom-background {
+    min-height: 100vh;
+    background-image: url('../../public/images/forest.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }

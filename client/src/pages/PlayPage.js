@@ -3,6 +3,7 @@ import { fetchSavedCards } from "../utils/API";
 import Confetti from "react-confetti";
 import { Link } from "react-router-dom";
 import { authService } from "../utils/auth";
+import './PlayPage.css';
 
 const PlayPage = () => {
   const [savedCards, setSavedCards] = useState([]);
@@ -69,13 +70,18 @@ const PlayPage = () => {
 
   return (
     <>
+    <div className="custom-background">
+        {/* <img src="../../public/images/forest.jpg"> */}
+
+
+ 
       {/* Goal input box */}
       <div className="container">
         <div className="columns is-centered">
           <div className="column is-half">
-            <div className="box">
-              <div className="field">
-                <label htmlFor="goal" className="label">
+            <div className="box has-background-link">
+              <div className="field ">
+                <label htmlFor="goal" className="label has-text-white">
                   What is your goal for today?
                 </label>
                 <div className="control">
@@ -90,7 +96,7 @@ const PlayPage = () => {
                 </div>
               </div>
               {/* Display the progress */}
-              <div className="content">
+              <div className="content has-text-white">
                 <p>
                   Progress: {score}/{goal}
                 </p>
@@ -161,6 +167,7 @@ const PlayPage = () => {
           </div>
         </div>
       )}
+    </div>
     </>
   );
 };

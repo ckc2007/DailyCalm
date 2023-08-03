@@ -84,6 +84,27 @@ const PlayPage = () => {
     },
   });
 
+  // Use CLEAR_SCORE mutation
+  const [clearScoreMutation] = useMutation(CLEAR_SCORE, {
+    update(cache, { data: { clearScore: updatedScore } }) {
+      try {
+        const { me } = cache.readQuery({ query: GET_ME });
+        const newScore = updatedScore.score;
+        cache.writeQuery({
+          query: GET_ME,
+          data: {
+            me: {
+              ...me,
+              score: newScore,
+            },
+          },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
+
   // Function to handle the "Next" button click
   const handleNextClick = () => {
     setCurrentCardIndex((prevIndex) => (prevIndex + 1) % savedCards.length);

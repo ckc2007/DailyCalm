@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { ADD_SCORE, UPDATE_GOAL } from "../graphql/mutations";
 import { GET_ME } from "../graphql/queries";
 // TODO: refactor api:
@@ -92,8 +92,11 @@ const PlayPage = () => {
   // Function to handle the "+" button click to update the score and trigger confetti animation
   const handleAddScore = async () => {
     try {
-      await addScoreMutation();
-      setScore((prevScore) => prevScore + 1);
+      const scoreValue = 1;
+      console.log("Adding score...");
+      await addScoreMutation({ variables: { score: scoreValue } });
+      console.log("Score added successfully");
+      // setScore((prevScore) => prevScore + 1);
       setConfettiActive(true);
     } catch (error) {
       console.error("Error adding score:", error);
@@ -102,10 +105,12 @@ const PlayPage = () => {
 
   const handleGoalChange = async (e) => {
     const newGoal = parseInt(e.target.value, 10);
-    setGoal(newGoal);
+    // setGoal(newGoal);
 
     try {
+      console.log("Updating goal...");
       await updateGoalMutation({ variables: { goal: newGoal } });
+      console.log("Goal updated successfully!");
     } catch (error) {
       console.error("Error updating goal:", error);
     }
@@ -122,6 +127,12 @@ const PlayPage = () => {
       return () => clearTimeout(confettiTimer);
     }
   }, [confettiActive]);
+
+  // Use GET_ME query to read cached data
+  const { data } = useQuery(GET_ME);
+  // Get the user's score and goal from the cached data
+  const score = data?.me?.score || 0; // Default to 0 if data is not available yet
+  const goal = data?.me?.goal || 5; // Default to 5 if data is not available yet
 
   return (
     <>

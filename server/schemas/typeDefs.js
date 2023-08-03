@@ -39,6 +39,7 @@ const typeDefs = gql`
     removeCard(cardId: ID!): User
     addScore(score: Int!): User
     updateGoal(goal: Int!): User
+    clearScore: User
   }
 
   input CardInput {

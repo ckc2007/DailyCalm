@@ -193,6 +193,12 @@ const PlayPage = () => {
                   Progress: {score}/{goal}
                 </p>
               </div>
+              {/* "Clear Score" button */}
+              <div className="buttons">
+                <button className="button is-danger" onClick={handleClearScore}>
+                  Clear Score
+                </button>
+              </div>
             </div>
           </div>
         </div>

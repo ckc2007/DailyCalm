@@ -7,22 +7,28 @@ import { authService } from "../utils/auth";
 const AppNavbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleHamburger = () => {
+    // toggle isActive state
+    setIsActive(!isActive);
+  };
 
   return (
     <>
       <nav className="navbar has-background-info" role="navigation" aria-label="main navigation">
         <div className="container">
-          <div className="navbar-item button hover is-success is-medium is-rounded">
+          <div className="navbar-brand">
             <Link to="/" className="navbar-item button hover is-success is-medium is-rounded">
               Calms Search
             </Link>
-            <button className="navbar-burger" aria-label="menu" aria-expanded="false" onClick={() => setShowModal(true)}>
+            <button className={`navbar-burger ${isActive ? "is-active" : ""}`} aria-label="menu" aria-expanded="false" onClick={toggleHamburger}>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </button>
           </div>
-          <div className="navbar-menu ">
+          <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
             <div className="navbar-end">
               <Link to="/" className="navbar-item button hover is-success is-medium is-rounded">Search For Calms</Link>
               {authService.loggedIn() ? (
@@ -32,7 +38,7 @@ const AppNavbar = () => {
                   <button className="navbar-item button hover is-success is-medium is-rounded" onClick={authService.logout}>Logout</button>
                 </>
               ) : (
-                <button className="navbar button hover is-success is-medium is-rounded" onClick={() => setShowModal(true)}>Login/Sign Up</button>
+                <button className="navbar-item button hover is-success is-medium is-rounded" onClick={() => setShowModal(true)}>Login/Sign Up</button>
 
               )}
             </div>

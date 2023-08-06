@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../graphql/mutations";
 import { authService } from "../utils/auth";
 
-const SignupForm = () => {
+const SignupForm = ({ handleModalClose }) => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({
     username: "",
@@ -25,11 +25,11 @@ const SignupForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    setValidated(true);
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
       event.stopPropagation();
     } else {
       try {
@@ -41,17 +41,18 @@ const SignupForm = () => {
             password: userFormData.password,
           },
         });
-        console.log({data})
-        // debug here:
+        
         // Check the response from the mutation and access the correct field
         // Update 'createUser' to the correct field returned by your mutation
         // Make sure to access the token from the correct field
-
         const { token } = data.addUser;
         console.log(token);
 
         // console.log(user);
         authService.login(token);
+
+        // Call the 'handleModalClose' function to close the modal
+        handleModalClose();
       } catch (err) {
         console.error(err);
         setShowAlert(true);
@@ -63,7 +64,6 @@ const SignupForm = () => {
       email: "",
       password: "",
     });
-    setValidated(true);
   };
 
   return (
@@ -80,50 +80,44 @@ const SignupForm = () => {
           Something went wrong with your signup!
         </Alert>
 
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="username">Username</Form.Label>
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='username'>Username</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Your username"
-            name="username"
+            type='text'
+            placeholder='Your username'
+            name='username'
             onChange={handleInputChange}
             value={userFormData.username}
             required
           />
-          <Form.Control.Feedback type="invalid">
-            Username is required!
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="email">Email</Form.Label>
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='email'>Email</Form.Label>
           <Form.Control
-            type="email"
-            placeholder="Your email address"
-            name="email"
+            type='email'
+            placeholder='Your email address'
+            name='email'
             onChange={handleInputChange}
             value={userFormData.email}
             required
           />
-          <Form.Control.Feedback type="invalid">
-            Email is required!
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="password">Password</Form.Label>
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='password'>Password</Form.Label>
           <Form.Control
-            type="password"
-            placeholder="Your password"
-            name="password"
+            type='password'
+            placeholder='Your password'
+            name='password'
             onChange={handleInputChange}
             value={userFormData.password}
             required
           />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
         </Form.Group>
+
         <Button
           disabled={
             !(

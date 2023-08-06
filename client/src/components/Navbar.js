@@ -8,12 +8,17 @@ const AppNavbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
   const [activeTab, setActiveTab] = useState("login");
+  const [isActive, setIsActive] = useState(false); 
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     setShowModal(true);
 
   };
+
+  const toggleHamburger = () => {   // <- Here's the new toggleHamburger function
+    setIsActive(!isActive);
+  }
 
   return (
     <>
@@ -22,7 +27,7 @@ const AppNavbar = () => {
           <div className="navbar-item">
             <Link to="/" className="button hover is-success is-medium is-rounded">
 
-              Calms Search
+              Home
             </Link>
             <button className={`navbar-burger ${isActive ? "is-active" : ""}`} aria-label="menu" aria-expanded="false" onClick={toggleHamburger}>
               <span aria-hidden="true"></span>
@@ -32,7 +37,7 @@ const AppNavbar = () => {
           </div>
           <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
             <div className="navbar-end">
-              <Link to="/" className="navbar-item button hover is-success is-medium is-rounded">Search For Calms</Link>
+              <Link to="/search-cards" className="navbar-item button hover is-success is-medium is-rounded">Search For Calms</Link>
               {authService.loggedIn() ? (
                 <>
                   <Link to="/saved" className="navbar-item button hover is-success is-medium is-rounded">See Your Calms</Link>

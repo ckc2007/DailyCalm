@@ -1,19 +1,15 @@
 import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../graphql/mutations";
 import { authService } from "../utils/auth";
 
 const SignupForm = ({ handleModalClose }) => {
-  // set initial form state
   const [userFormData, setUserFormData] = useState({
     username: "",
     email: "",
     password: "",
   });
-  // set state for form validation
   const [validated, setValidated] = useState(false);
-  // set state for alert
   const [showAlert, setShowAlert] = useState(false);
 
   const [addUser] = useMutation(ADD_USER);
@@ -27,13 +23,11 @@ const SignupForm = ({ handleModalClose }) => {
     event.preventDefault();
     setValidated(true);
 
-    // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.stopPropagation();
     } else {
       try {
-        // use the addUser mutation with the useMutation hook
         const { data } = await addUser({
           variables: {
             username: userFormData.username,
@@ -41,17 +35,11 @@ const SignupForm = ({ handleModalClose }) => {
             password: userFormData.password,
           },
         });
-        
-        // Check the response from the mutation and access the correct field
-        // Update 'createUser' to the correct field returned by your mutation
-        // Make sure to access the token from the correct field
+
         const { token } = data.addUser;
         console.log(token);
 
-        // console.log(user);
         authService.login(token);
-
-        // Call the 'handleModalClose' function to close the modal
         handleModalClose();
       } catch (err) {
         console.error(err);
@@ -67,72 +55,79 @@ const SignupForm = ({ handleModalClose }) => {
   };
 
   return (
-    <>
-      {/* This is needed for the validation functionality above */}
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
-        <Alert
-          dismissible
-          onClose={() => setShowAlert(false)}
-          show={showAlert}
-          variant="danger"
-        >
+    <div className="box">
+      {showAlert && (
+        <div className="notification is-danger">
           Something went wrong with your signup!
-        </Alert>
+        </div>
+      )}
+      <form noValidate onSubmit={handleFormSubmit}>
+        <div className="field">
+          <label className="label" htmlFor="username">
+            Username
+          </label>
+          <div className="control">
+            <input
+              className={`input ${validated && !userFormData.username ? "is-danger" : ""}`}
+              type="text"
+              placeholder="Your username"
+              name="username"
+              onChange={handleInputChange}
+              value={userFormData.username}
+              required
+            />
+            {validated && !userFormData.username && (
+              <p className="help is-danger">Username is required!</p>
+            )}
+          </div>
+        </div>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor='username'>Username</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Your username'
-            name='username'
-            onChange={handleInputChange}
-            value={userFormData.username}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
-        </Form.Group>
+        <div className="field">
+          <label className="label" htmlFor="email">
+            Email
+          </label>
+          <div className="control">
+            <input
+              className={`input ${validated && !userFormData.email ? "is-danger" : ""}`}
+              type="email"
+              placeholder="Your email address"
+              name="email"
+              onChange={handleInputChange}
+              value={userFormData.email}
+              required
+            />
+            {validated && !userFormData.email && (
+              <p className="help is-danger">Email is required!</p>
+            )}
+          </div>
+        </div>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor='email'>Email</Form.Label>
-          <Form.Control
-            type='email'
-            placeholder='Your email address'
-            name='email'
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
-        </Form.Group>
+        <div className="field">
+          <label className="label" htmlFor="password">
+            Password
+          </label>
+          <div className="control">
+            <input
+              className={`input ${validated && !userFormData.password ? "is-danger" : ""}`}
+              type="password"
+              placeholder="Your password"
+              name="password"
+              onChange={handleInputChange}
+              value={userFormData.password}
+              required
+            />
+          </div>
+        </div>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor='password'>Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Your password'
-            name='password'
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-        </Form.Group>
-
-        <Button
-          disabled={
-            !(
-              userFormData.username &&
-              userFormData.email &&
-              userFormData.password
-            )
-          }
+        <button
+          className={`button is-success ${!(userFormData.username && userFormData.email && userFormData.password) ? "is-disabled" : ""}`}
           type="submit"
-          variant="success"
+          disabled={!(userFormData.username && userFormData.email && userFormData.password)}
         >
           Submit
-        </Button>
-      </Form>
-    </>
+        </button>
+      </form>
+    </div>
   );
 };
 

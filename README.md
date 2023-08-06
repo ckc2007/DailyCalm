@@ -44,8 +44,27 @@ To start, a new user will use the signup form to create a new profile .
 
 ## Screenshot / Video
 
-![screenshot](./assets/images/screenshot.png)
-![deployed page](https://daily-calm-2023-be74e09f75dd.herokuapp.com/ "deployed page")
+Home - Logged Out View
+![Home - Logged Out View](./assets/images/Screen%20Shot%202023-08-06%20at%202.55.16%20PM.png)
+
+Home - Logged In View
+![Home - Logged In View](./assets/images/Screen%20Shot%202023-08-06%20at%202.54.13%20PM.png)
+
+Search Page
+![Search Page](./assets/images/Screen%20Shot%202023-08-06%20at%202.54.27%20PM.png)
+
+Saved Page
+![Saved Page](./assets/images/Screen%20Shot%202023-08-06%20at%202.55.06%20PM.png)
+
+Play Page With Score View
+![Play Page With Score View](./assets/images/Screen%20Shot%202023-08-06%20at%202.55.16%20PM.png)
+
+Login Modal
+![Login Modal](./assets/images/Screen%20Shot%202023-08-06%20at%202.55.55%20PM.png)
+
+Signup Modal
+![Signup Modal](./assets/images/Screen%20Shot%202023-08-06%20at%202.55.37%20PM.png)
+
 
 ## Contributing
 

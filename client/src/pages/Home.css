@@ -1,40 +1,23 @@
 .home-page {
-    /* Change the URL to the path where your image is stored */
-    background-image: url('../../public/images/DailyHome.jpg');
-
-    /* This will position the background image in the center */
-    background-position: center;
-
-    /* This will make the background image cover the entire container */
-    background-size: cover;
-
-    /* This will make the background image not repeat */
-    background-repeat: no-repeat;
-
-    /* Set the height to 100vh (viewport height) to make it fill the screen */
-    height: 100vh;
-
-    /* Flex settings */
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
     flex-direction: column;
-    padding-top: 30%; /* Adjust this value to move the button lower */
-}
-
-.home-button {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #ffffff;
-    background-color: rgba(0, 123, 255, 0.6); /* The last value is the alpha (transparency) */
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This ensures the container takes the full height of the viewport */
     text-align: center;
-    font-size: 1.5em;
-    transition: all 0.2s;
-}
-
-.home-button:hover {
-    background-color: #0056b3;
-}
+    gap: 1em; /* This provides a gap between the h1 and h2 elements */
+    padding-bottom: 22%; /* Adjust this value to move the text up or down */
+  }
+  
+  h1 {
+    font-size: 12em; /* Adjust this value to make the text larger or smaller */
+    color: #43e5f0; /* Adjust color as needed */
+    font-family: 'Playfair Display', serif;
+  }
+  
+  h2 {
+    font-size: 3em; /* Adjust as needed */
+    color: #43e5f0;
+    font-family: 'Playfair Display', serif; /* Adjust color as needed */
+  }
+  

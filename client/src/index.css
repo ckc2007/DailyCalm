@@ -31,3 +31,7 @@ h6 {
   font-weight: 300;
   font-style: italic;
 }
+
+.tabs-content {
+  background-color: #fff;
+}

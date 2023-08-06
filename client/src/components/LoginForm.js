@@ -18,11 +18,11 @@ const LoginForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    setValidated(true);
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
       event.stopPropagation();
     }
 
@@ -45,11 +45,10 @@ const LoginForm = () => {
     }
 
     setUserFormData({
-      username: "",
       email: "",
       password: "",
     });
-    setValidated(true);
+  
   };
 
   return (

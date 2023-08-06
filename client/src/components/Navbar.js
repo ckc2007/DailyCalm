@@ -12,6 +12,7 @@ const AppNavbar = () => {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     setShowModal(true);
+
   };
 
   return (
@@ -20,15 +21,16 @@ const AppNavbar = () => {
         <div className="container">
           <div className="navbar-item">
             <Link to="/" className="button hover is-success is-medium is-rounded">
+
               Calms Search
             </Link>
-            <button className="navbar-burger" aria-label="menu" aria-expanded="false" onClick={() => setShowModal(true)}>
+            <button className={`navbar-burger ${isActive ? "is-active" : ""}`} aria-label="menu" aria-expanded="false" onClick={toggleHamburger}>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </button>
           </div>
-          <div className="navbar-menu ">
+          <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
             <div className="navbar-end">
               <Link to="/" className="navbar-item button hover is-success is-medium is-rounded">Search For Calms</Link>
               {authService.loggedIn() ? (
@@ -38,7 +40,7 @@ const AppNavbar = () => {
                   <button className="navbar-item button hover is-success is-medium is-rounded" onClick={authService.logout}>Logout</button>
                 </>
               ) : (
-                <button className="navbar button hover is-success is-medium is-rounded" onClick={() => setShowModal(true)}>Login/Sign Up</button>
+                <button className="navbar-item button hover is-success is-medium is-rounded" onClick={() => setShowModal(true)}>Login/Sign Up</button>
 
               )}
             </div>

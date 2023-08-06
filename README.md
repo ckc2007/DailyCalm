@@ -6,21 +6,29 @@ Introducing DailyCalm, your personal self-care companion.
 
 ## Description
 
-- Search for self care routines, ideas and activities that you would like to remind yourself to do on a daily basis. Gather points towards a personal goal, and enjoy taking a few minutes each day to find the space for self-care.. 
-- When you find yourself too busy to engage in self-care activities, DailyCalm can help you to make self care a priority - gently reminding you to actively practice self care and thereby generating healthy self-care routines. Customize your own care-list and goals. 
-- DailyCalm is a simple way to remind yourself of the things you need to do to stay well. Use it once a day, or once a week - our app will aid you in your self-care routine.. 
-- The developeres wanted to create this app for their own use - they felt there was a need for a simple, minimalist user interface, that would function as a kind of virtual card-deck of ideas for self care activities. They wanted to make these cards quick and easy to find, to allow the user to save them and to have them display in the play area in timed intervals. The score and goal features were implemented to allow the user to trak their progress, and to have some reward for taking care of their needs. The application is entirely customizable, and could be used for other self-care style applications. The developers would like to acknowledge that this is in no way meant to be a replacement for mental health services or medical treatment, and should be viewed more as a type of self-care journal that can be customized to any user's needs. Eventually they would like to call on real world data to populate the self-care routine categories..
+- Search for self care routines, ideas and activities that you would like to remind yourself to do on a daily basis. Gather points towards a personal goal, and enjoy taking a few minutes each day to find the space for self-care.
+- When you find yourself too busy to engage in self-care activities, DailyCalm can help you to make self-care a priority - gently reminding you to actively practice self-care and thereby generate healthy self-care routines. Customize your own care-list and goals. 
+- DailyCalm is a simple way to remind yourself of the things you need to do to stay well. Use it once a day, or once a week. 
+- The developeres wanted to create this app for their own use - they felt there was a need for a simple, minimalist user interface, that would function as a kind of virtual card-deck of ideas for self-care activities. They wanted to make these cards quick and easy to find, to allow the user to save them and to have them display in the play area in timed intervals. The score and goal features were implemented to allow the user to track their progress, and to have some reward for taking care of their needs. The application is entirely customizable, and could be used for other self-care-style applications. 
+- Disclaimer: The developers would like to acknowledge that this is in no way meant to be a replacement for mental health services or medical treatment, and should be viewed more as a type of self-care journal that can be customized to any user's needs. Eventually they would like to call on real world data to populate the self-care routine categories.
 
 ## Table Of Contents
 
 [Installation](#installation)
+
 [Usage](#usage)
+
 [Credits](#credits)
+
 [License](#license)
 
 ## Installation
 
-Please visit the deployed site here
+Please visit the deployed site [here](https://daily-calm-2023-be74e09f75dd.herokuapp.com/)
+
+Heroku Deployed URL: https://daily-calm-2023-be74e09f75dd.herokuapp.com/
+
+GitHub Repository URL: https://github.com/ckc2007/DailyCalm
 
 ## Usage
 

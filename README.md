@@ -24,7 +24,14 @@ Please visit the deployed site here
 
 ## Usage
 
-To start, a new user will use the signup form to create a new profile - once the new user is registered, they will be taken to the homepage where a menu of self care ideas and activities are presented - choose any activities you would like to remind yourself to do, and these "calms" will be added to your profile page  - view and edit your "calms" at any time - when you want to begin your new self-care routine, just go to the Play page, where you will be presented with your activities - hit "+" if you complete an activity or "next" to skip to the next activity - your activities will cycle through on a timer
+To start, a new user will use the signup form to create a new profile .
+- Once the new user is registered, they will be taken to the homepage where a menu of self care ideas and activities are presented. 
+- Choose any activities you would like to remind yourself to do, and these "calms" will be added to your profile page.  
+- View and edit your "calms" at any time. 
+- When you want to begin your new self-care routine, just go to the Play page, where you will be presented with your activities. 
+- Hit "+" if you complete an activity or "next" to skip to the next activity. 
+- Your activities will cycle through on a timer.
+- Achieve your self care goals each day!
 
 ## Screenshot / Video
 
@@ -34,10 +41,20 @@ To start, a new user will use the signup form to create a new profile - once the
 ## Contributing
 
 This project was built in collaboration with Terrell Anderson, Sean Zweifel, Christopher Brown, Chris Chorney,
-whose GitHub profile can be found [here](tanderson757, spzweifel, blaxlrose, ckc2007).
+whose GitHub profile can be found here:
+- [Sean Zweifel](https://github.com/spzweifel)
+
+- [Christopher Brown](https://github.com/blaxlrose)
+
+- [Terrell Anderson](https://github.com/Tanderson757)
+
+- [Chris Chorney](https://github.com/ckc2007)
+
 
 Third party assets used in this project include:
-https://bulma.io/, https://www.npmjs.com/package/react-confetti, 
+- [Bulma CSS](https://bulma.io/)
+
+- [React-confetti](https://www.npmjs.com/package/react-confetti)
 
 Tutorials used in this project include:
 https://webpack.js.org/guides/getting-started/, https://www.mongodb.com/docs/manual/tutorial/, https://coding-boot-camp.github.io/full-stack/mongodb/deploy-with-heroku-and-mongodb-atlas

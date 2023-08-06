@@ -7,7 +7,7 @@ import { fetchSavedCards } from "../utils/API";
 import Confetti from "react-confetti";
 import { Link } from "react-router-dom";
 import { authService } from "../utils/auth";
-import './PlayPage.css';
+import "./PlayPage.css";
 
 const PlayPage = () => {
   const [savedCards, setSavedCards] = useState([]);
@@ -15,6 +15,7 @@ const PlayPage = () => {
   // const [score, setScore] = useState(0);
   // const [goal, setGoal] = useState(5);
   const [confettiActive, setConfettiActive] = useState(false);
+  const [showLargeStar, setShowLargeStar] = useState(true);
 
   let timer; // Declare the timer variable outside the useEffect hook
 
@@ -118,7 +119,7 @@ const PlayPage = () => {
       console.log("Adding score...");
       await addScoreMutation({ variables: { score: scoreValue } });
       console.log("Score added successfully");
-      // setScore((prevScore) => prevScore + 1);
+      setShowLargeStar(false);
       setConfettiActive(true);
     } catch (error) {
       console.error("Error adding score:", error);
@@ -153,7 +154,7 @@ const PlayPage = () => {
     if (confettiActive) {
       const confettiTimer = setTimeout(() => {
         setConfettiActive(false);
-      }, 3000); // Duration of the confetti animation in milliseconds
+      }, 5000); // Duration of the confetti animation in milliseconds
 
       // Clean up the setTimeout when the component unmounts or when confettiActive becomes false
       return () => clearTimeout(confettiTimer);
@@ -166,120 +167,143 @@ const PlayPage = () => {
   const score = data?.me?.score || 0; // Default to 0 if data is not available yet
   const goal = data?.me?.goal || 5; // Default to 5 if data is not available yet
 
+  // Determine the maximum progress and current progress as a percentage
+  const maxProgress = goal > score ? goal : score; // Use the larger value
+  const currentProgress = (score / maxProgress) * 100;
+
   return (
     <>
-    <div className="custom-background">
+      <div className="custom-background">
         {/* <img src="../../public/images/forest.jpg"> */}
 
-
- 
-      {/* Goal input box */}
-      <div className="container">
-        <div className="columns is-centered">
-          <div className="column is-half">
-            <div className="box has-background-link">
-              <div className="field ">
-                <label htmlFor="goal" className="label has-text-white">
-                  What is your goal for today?
-                </label>
-                <div className="control">
-                  <input
-                    type="number"
-                    id="goal"
-                    name="goal"
-                    value={goal}
-                    onChange={handleGoalChange}
-                    className="input"
-                  />
-                </div>
-              </div>
-              {/* Display the progress */}
-              <div className="content has-text-white">
-                <p>
-                  Progress: {score}/{goal}
-                </p>
-              </div>
-              {/* "Clear Score" button */}
-              <div className="buttons">
-                <button className="button is-danger" onClick={handleClearScore}>
-                  Clear Score
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Display confetti animation when the "+" button is clicked */}
-      {confettiActive && <Confetti />}
-
-      {/* Display the current card based on currentCardIndex */}
-      {savedCards.length > 0 ? (
+        {/* Goal input box */}
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-half">
-              <div className="box">
-                <div className="card">
-                  {savedCards[currentCardIndex].image ? (
-                    <div className="card-image">
-                      <figure className="image">
-                        <img
-                          src={savedCards[currentCardIndex].image}
-                          alt={`The cover for ${savedCards[currentCardIndex].title}`}
-                        />
-                      </figure>
-                    </div>
-                  ) : (
-                    // If there's no image, display a placeholder image or other content
-                    <div className="card-content">
-                      <div className="content">No Image Available</div>
-                    </div>
-                  )}
-                  <div className="card-content">
-                    <p className="title is-4">
-                      {savedCards[currentCardIndex].title}
-                    </p>
-                    <p>{savedCards[currentCardIndex].description}</p>
-                  </div>
-                  <div className="card-footer">
-                    {/* Add a "+" button to update the score */}
-                    <button
-                      className="button is-success"
-                      onClick={handleAddScore}
-                    >
-                      +
-                    </button>
-                    {/* Add a "Next" button to display the next card */}
-                    <button
-                      className="button is-primary"
-                      onClick={handleNextClick}
-                    >
-                      Next
-                    </button>
+              <div className="box has-background-link">
+                <div className="field ">
+                  <label htmlFor="goal" className="label has-text-white">
+                    What is your goal for today?
+                  </label>
+                  <div className="control">
+                    <input
+                      type="number"
+                      id="goal"
+                      name="goal"
+                      value={goal}
+                      onChange={handleGoalChange}
+                      className="input"
+                    />
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="container">
-          <div className="columns is-centered">
-            <div className="column is-half">
-              <div className="box">
-                <div className="content">
+                {/* Display the progress */}
+                <div className="content has-text-white">
                   <p>
-                    To start your self-care routine, please search for Calms and
-                    save them. You can search for Calms <Link to="/">here</Link>
-                    .
+                    Progress: {score}/{goal}{" "}
+                    {score >= goal && (
+                      <span
+                        className={`gold-star ${showLargeStar ? "large" : ""}`}
+                      >
+                        🌟
+                      </span>
+                    )}
                   </p>
                 </div>
+                {/* Progress bar */}
+                <div className="progress-bar">
+                  <div
+                    className="progress-fill"
+                    style={{
+                      width: `${currentProgress}%`,
+                      "--max-progress": maxProgress,
+                      "--current-progress": currentProgress,
+                    }}
+                  ></div>
+                </div>
+                {/* "Clear Score" button */}
+                <div className="buttons">
+                  <button
+                    className="button is-danger"
+                    onClick={handleClearScore}
+                  >
+                    Clear Score
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      )}
-    </div>
+
+        {/* Display confetti animation when the "+" button is clicked */}
+        {confettiActive && <Confetti />}
+
+        {/* Display the current card based on currentCardIndex */}
+        {savedCards.length > 0 ? (
+          <div className="container">
+            <div className="columns is-centered">
+              <div className="column is-half">
+                <div className="box">
+                  <div className="card">
+                    {savedCards[currentCardIndex].image ? (
+                      <div className="card-image">
+                        <figure className="image">
+                          <img
+                            src={savedCards[currentCardIndex].image}
+                            alt={`The cover for ${savedCards[currentCardIndex].title}`}
+                          />
+                        </figure>
+                      </div>
+                    ) : (
+                      // If there's no image, display a placeholder image or other content
+                      <div className="card-content">
+                        <div className="content">No Image Available</div>
+                      </div>
+                    )}
+                    <div className="card-content">
+                      <p className="title is-4">
+                        {savedCards[currentCardIndex].title}
+                      </p>
+                      <p>{savedCards[currentCardIndex].description}</p>
+                    </div>
+                    <div className="card-footer">
+                      {/* Add a "+" button to update the score */}
+                      <button
+                        className="button is-success"
+                        onClick={handleAddScore}
+                      >
+                        +
+                      </button>
+                      {/* Add a "Next" button to display the next card */}
+                      <button
+                        className="button is-primary"
+                        onClick={handleNextClick}
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="container">
+            <div className="columns is-centered">
+              <div className="column is-half">
+                <div className="box">
+                  <div className="content">
+                    <p>
+                      To start your self-care routine, please search for Calms
+                      and save them. You can search for Calms{" "}
+                      <Link to="/">here</Link>.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 };

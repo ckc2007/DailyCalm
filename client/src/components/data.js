@@ -8,7 +8,7 @@ export const categories = [
         title: "Pet your dog or cat",
         description:
           "Spending time with pets can be comforting and reduce stress.",
-        image: "images/pet.jpeg",
+        image: "images/petyourdog.jpeg",
       },
       {
         cardId: "card_2",
@@ -56,7 +56,7 @@ export const categories = [
         title: "Unplug from social media",
         description:
           "Take a break from social media to reduce digital overwhelm.",
-        image: "images/Unplug.jpeg",
+        image: "images/Social-media-Detox.jpg",
       },
       {
         cardId: "card_8",
@@ -97,7 +97,7 @@ export const categories = [
         title: "Take a long shower or bath",
         description:
           "Indulge in a relaxing shower or bath to rejuvenate your body.",
-        image: "images/bath.jpeg",
+        image: "images/shower.jpeg",
       },
       {
         cardId: "card_13",

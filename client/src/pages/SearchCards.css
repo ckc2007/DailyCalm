@@ -6,28 +6,28 @@ body {
 }
 
 .custom-card {
-    height: 100%; /* Make sure the card takes the full height of the container */
+    height: 100%; 
     display: flex;
     flex-direction: column;
-    border-radius: 20px; /* This gives rounded corners to the card */
-    background-color: rgba(255, 255, 255, 0.8); /* This gives the card a slight transparency */
-    overflow: hidden; /* This ensures the rounded corners are applied to the entire card, including the image */
+    border-radius: 20px; 
+    background-color: rgba(255, 255, 255, 0.8); 
+    overflow: hidden; 
 }
 
 .custom-card .card-image {
-    height: 200px; /* Specify the height of the card image */
-    overflow: hidden; /* Make sure the image doesn't spill over */
+    height: 200px; 
+    overflow: hidden; 
 }
 
 .custom-card .card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Make sure the image covers the entire card image space */
+    object-fit: cover; 
 }
 
 .custom-card .card-content {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertically center the content */
-    flex-grow: 1; /* Take up the remaining space in the container */
+    justify-content: center; 
+    flex-grow: 1; 
 }

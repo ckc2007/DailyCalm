@@ -88,7 +88,7 @@ const SavedCards = () => {
           {userData.savedCards.map((card) => {
             return (
               <div key={card.cardId} className="column is-4">
-                <div className="card">
+                <div className="custom-card">
                   {card.image ? (
                     <div className="card-image">
                       <figure className="image">
@@ -106,7 +106,7 @@ const SavedCards = () => {
                   </div>
                   <footer className="card-footer">
                     <button
-                      className="button is-danger is-fullwidth"
+                      className="button is-success is-fullwidth"
                       onClick={() => handleDeleteCard(card.cardId)}
                     >
                       Delete this Calm!

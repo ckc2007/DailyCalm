@@ -44,27 +44,35 @@ To start, a new user will use the signup form to create a new profile .
 
 ## Screenshot / Video
 
-Home - Logged Out View
-![Home - Logged Out View](./assets/images/Screen%20Shot%202023-08-06%20at%202.55.16%20PM.png)
+Logged Out Home View
+![Home - Logged Out View](./assets/images/Screen%20Shot%202023-08-06%20at%2011.54.02%20PM.png)
 
-Home - Logged In View
-![Home - Logged In View](./assets/images/Screen%20Shot%202023-08-06%20at%202.54.13%20PM.png)
+Logged Out Search View
+![Home - Logged In View](./assets/images/Screen%20Shot%202023-08-06%20at%2011.54.12%20PM.png)
 
-Search Page
-![Search Page](./assets/images/Screen%20Shot%202023-08-06%20at%202.54.27%20PM.png)
+Logged In Home View
+![Search Page](./assets/images/Screen%20Shot%202023-08-06%20at%2011.54.35%20PM.png)
 
-Saved Page
-![Saved Page](./assets/images/Screen%20Shot%202023-08-06%20at%202.55.06%20PM.png)
+Logged In Search View
+![Saved Page](./assets/images/Screen%20Shot%202023-08-06%20at%2011.54.47%20PM.png)
 
-Play Page With Score View
-![Play Page With Score View](./assets/images/Screen%20Shot%202023-08-06%20at%202.55.16%20PM.png)
+Save A Calm!
+![Play Page With Score View](./assets/images/Screen%20Shot%202023-08-06%20at%2011.55.00%20PM.png)
+
+View My Saved Calms
+![Login Modal](./assets/images/Screen%20Shot%202023-08-06%20at%2011.55.09%20PM.png)
+
+Play Page: Set Goal And Score View
+![Signup Modal](./assets/images/Screen%20Shot%202023-08-06%20at%204.55.30%20PM.png)
 
 Login Modal
-![Login Modal](./assets/images/Screen%20Shot%202023-08-06%20at%202.55.55%20PM.png)
+![Signup Modal](./assets/images/Screen%20Shot%202023-08-06%20at%2011.54.20%20PM.png)
 
-Signup Modal
-![Signup Modal](./assets/images/Screen%20Shot%202023-08-06%20at%202.55.37%20PM.png)
+Sign Up Modal
+![Signup Modal](./assets/images/Screen%20Shot%202023-08-06%20at%2011.54.25%20PM.png)
 
+Video Showcase - PWA Installation:
+[Video](https://watch.screencastify.com/v/wTFSgO6lq53WJarsxJ69)
 
 ## Contributing
 
@@ -90,6 +98,10 @@ Tutorials used in this project include:
 - https://webpack.js.org/guides/getting-started/
 - https://www.mongodb.com/docs/manual/tutorial/
 - https://coding-boot-camp.github.io/full-stack/mongodb/deploy-with-heroku-and-mongodb-atlas
+- https://www.youtube.com/watch?v=WDpxqopXd9U
+- https://www.youtube.com/shorts/Xrgddey8jcA
+- https://www.youtube.com/watch?v=IZGNcSuwBZs&t=657s
+- https://developers.google.com/web/tools/workbox/guides/generate-service-worker/webpack
 
 ## License
 

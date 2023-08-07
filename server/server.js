@@ -5,7 +5,6 @@ const db = require("./config/connection");
 const { typeDefs, resolvers } = require("./schemas");
 const { authMiddleware } = require("./utils/auth.js");
 
-
 // const cors = require("cors");
 
 const PORT = process.env.PORT || 3001;
@@ -22,8 +21,12 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
+// new
+app.use(express.static("../client/dist"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// new
+require('./routes/htmlRoutes.js')(app);
 
 const startApolloServer = async () => {
   await server.start();

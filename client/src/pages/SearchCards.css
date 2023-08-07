@@ -1,3 +1,5 @@
+/* Existing styles */
+
 body {
     background-image: url('../../public/images/Hero-no-logo.jpg');
     background-repeat: no-repeat;
@@ -11,7 +13,12 @@ body {
     flex-direction: column;
     border-radius: 20px; 
     background-color: rgba(255, 255, 255, 0.8); 
-    overflow: hidden; 
+    overflow: hidden;
+    transition: transform 0.3s; /* Add a transition for smooth animation */
+}
+
+.custom-card:hover {
+    transform: perspective(1000px) rotateX(8deg); /* Apply a 3D rotate effect on hover */
 }
 
 .custom-card .card-image {
@@ -29,5 +36,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center; 
-    flex-grow: 1; 
+    flex-grow: 1;
+    opacity: 8; /* Hide the content initially */
+    transition: opacity 0.3s; /* Add a transition for smooth fade-in effect */
+}
+
+.custom-card:hover .card-content {
+    opacity: 1; /* Show the content on hover */
 }

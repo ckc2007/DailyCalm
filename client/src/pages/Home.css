@@ -1,23 +1,36 @@
 .home-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* This ensures the container takes the full height of the viewport */
-    text-align: center;
-    gap: 1em; /* This provides a gap between the h1 and h2 elements */
-    padding-bottom: 22%; /* Adjust this value to move the text up or down */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  text-align: center;
+  gap: 1em; 
+  padding-bottom: 22%; 
+}
+
+h1 {
+  font-size: 12em; 
+  color: #43e5f0; 
+  font-family: 'Playfair Display', serif;
+}
+
+h2 {
+  font-size: 3em;
+  color: #3ef0fd;
+  font-family: 'Playfair Display', serif;
+}
+
+
+@media (max-width: 768px) {
   h1 {
-    font-size: 12em; /* Adjust this value to make the text larger or smaller */
-    color: #43e5f0; /* Adjust color as needed */
-    font-family: 'Playfair Display', serif;
+      font-size: 7em;
   }
-  
-  h2 {
-    font-size: 3em; /* Adjust as needed */
-    color: #43e5f0;
-    font-family: 'Playfair Display', serif; /* Adjust color as needed */
+}
+
+
+@media (max-width: 480px) {
+  h1 {
+      font-size: 5em; 
   }
-  
+}

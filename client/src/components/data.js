@@ -97,7 +97,7 @@ export const categories = [
         title: "Take a long shower or bath",
         description:
           "Indulge in a relaxing shower or bath to rejuvenate your body.",
-        image: "images/bath.jpeg",
+        image: "images/shower.jpeg",
       },
       {
         cardId: "card_13",
